@@ -24,10 +24,9 @@ public class SubirImagen extends javax.swing.JFrame {
         initComponents();
     }
     public SubirImagen(int idm) {
-        idMascota = idm;
-        idlabel.setText(idMascota+"");
         initComponents();
-        System.out.println("llegue aqui--------");
+        idMascota = idm;
+        idlabel.setText(idm+"");
     }
 
     /**
