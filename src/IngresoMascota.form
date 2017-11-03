@@ -19,7 +19,7 @@
     </Component>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -44,63 +44,64 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="lnombre" min="-2" pref="78" max="-2" attributes="0"/>
-                                  <Component id="lidraza" min="-2" pref="94" max="-2" attributes="0"/>
-                                  <Component id="ldescripcion" min="-2" pref="78" max="-2" attributes="0"/>
-                                  <Component id="lfechanac" alignment="1" min="-2" pref="120" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="nombre" min="-2" pref="200" max="-2" attributes="0"/>
-                                  <Component id="idraza" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                  <Component id="descripcion" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                  <Component id="fechanac" min="-2" pref="79" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="lidmascota" min="-2" pref="78" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="Titulo" min="-2" max="-2" attributes="0"/>
-                                  <Component id="idmascota" min="-2" pref="200" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jLabel1" min="-2" pref="94" max="-2" attributes="0"/>
-                                  <Component id="lcidueño" min="-2" pref="88" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="lnombre" min="-2" pref="78" max="-2" attributes="0"/>
+                                          <Component id="lidraza" min="-2" pref="94" max="-2" attributes="0"/>
+                                          <Component id="ldescripcion" min="-2" pref="78" max="-2" attributes="0"/>
+                                          <Component id="lfechanac" alignment="1" min="-2" pref="120" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="nombre" min="-2" pref="200" max="-2" attributes="0"/>
+                                          <Component id="idraza" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                          <Component id="descripcion" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                                          <Component id="fechanac" min="-2" pref="79" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="lidmascota" min="-2" pref="78" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="Titulo" min="-2" max="-2" attributes="0"/>
+                                          <Component id="idmascota" min="-2" pref="200" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="jLabel1" min="-2" pref="94" max="-2" attributes="0"/>
+                                          <Component id="lcidueño" min="-2" pref="88" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="insertar" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="rutvet" max="32767" attributes="0"/>
+                                              <Component id="cidueño" min="-2" pref="200" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="insertar" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="rutvet" max="32767" attributes="0"/>
-                                      <Component id="cidueño" min="-2" pref="200" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="lerrorci" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lerrormascota" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lerrorraza" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lerrorvet" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lerrorci" min="-2" max="-2" attributes="0"/>
-                          <Component id="lerrormascota" min="-2" max="-2" attributes="0"/>
-                          <Component id="lerrorraza" min="-2" max="-2" attributes="0"/>
-                          <Component id="lerrorvet" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="0" min="-2" pref="559" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="229" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
                       <Component id="listar" min="-2" pref="97" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="559" max="-2" attributes="0"/>
-                  </Group>
               </Group>
-              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -148,13 +149,13 @@
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lerrorvet" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="insertar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="17" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="listar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <EmptySpace pref="23" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -177,7 +178,7 @@
     </Container>
     <Component class="javax.swing.JButton" name="insertar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Insertar dato"/>
+        <Property name="text" type="java.lang.String" value="Ingresar Mascota"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="insertarActionPerformed"/>
@@ -185,7 +186,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="listar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Listar datos"/>
+        <Property name="text" type="java.lang.String" value="Listar Mascotas"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listarActionPerformed"/>
