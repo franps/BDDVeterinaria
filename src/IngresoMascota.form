@@ -17,6 +17,21 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="jTextArea1">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
@@ -42,120 +57,148 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="lnombre" min="-2" pref="78" max="-2" attributes="0"/>
-                                          <Component id="lidraza" min="-2" pref="94" max="-2" attributes="0"/>
-                                          <Component id="ldescripcion" min="-2" pref="78" max="-2" attributes="0"/>
-                                          <Component id="lfechanac" alignment="1" min="-2" pref="120" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="nombre" min="-2" pref="200" max="-2" attributes="0"/>
-                                          <Component id="idraza" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                          <Component id="descripcion" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                                          <Component id="fechanac" min="-2" pref="79" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="lidmascota" min="-2" pref="78" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="Titulo" min="-2" max="-2" attributes="0"/>
-                                          <Component id="idmascota" min="-2" pref="200" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jLabel1" min="-2" pref="94" max="-2" attributes="0"/>
-                                          <Component id="lcidueño" min="-2" pref="88" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="insertar" min="-2" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="rutvet" max="32767" attributes="0"/>
-                                              <Component id="cidueño" min="-2" pref="200" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
+                                  <Component id="lnombre" min="-2" pref="78" max="-2" attributes="0"/>
+                                  <Component id="lfechanac" alignment="1" min="-2" pref="120" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lerrorci" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lerrormascota" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lerrorraza" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lerrorvet" min="-2" max="-2" attributes="0"/>
-                              </Group>
                           </Group>
-                          <Component id="jScrollPane1" alignment="0" min="-2" pref="559" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="ldescripcion" min="-2" pref="78" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="descripcion" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                              <Component id="Titulo" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="nombre" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="tipoAnimal" min="-2" pref="79" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="raza" min="-2" pref="87" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="fechanac" alignment="0" min="-2" pref="79" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
                       <Component id="listar" min="-2" pref="97" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" min="-2" pref="559" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <EmptySpace pref="17" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jLabel1" min="-2" pref="94" max="-2" attributes="0"/>
+                          <Component id="lcidueño" min="-2" pref="88" max="-2" attributes="0"/>
+                          <Component id="lidmascota" min="-2" pref="78" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="rutvet" max="32767" attributes="0"/>
+                              <Component id="cidueño" min="-2" pref="200" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="idmascota" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="agregarImagen" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lerrorci" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lerrorvet" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="lerrormascota" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
+                      <Component id="insertar" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
               <Component id="Titulo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lidmascota" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="idmascota" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lerrormascota" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="nombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lnombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="tipoAnimal" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="raza" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="fechanac" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                      <Component id="lfechanac" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="nombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lnombre" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="idraza" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lidraza" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lerrorraza" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="fechanac" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lfechanac" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="ldescripcion" min="-2" max="-2" attributes="0"/>
+                  <Component id="descripcion" min="-2" pref="86" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="ldescripcion" min="-2" max="-2" attributes="0"/>
-                  <Component id="descripcion" min="-2" pref="52" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="lerrormascota" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="lerrorci" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lerrorvet" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="idmascota" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lidmascota" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cidueño" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lcidueño" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="rutvet" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="cidueño" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lcidueño" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lerrorci" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="rutvet" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lerrorvet" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <EmptySpace pref="10" max="32767" attributes="0"/>
+              <Component id="agregarImagen" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="insertar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="listar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="23" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -202,7 +245,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="idmascota">
       <Properties>
-        <Property name="text" type="java.lang.String" value="idmascota"/>
+        <Property name="text" type="java.lang.String" value="nroChip"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="descripcion">
@@ -223,11 +266,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fechanacActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="idraza">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="idraza"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JTextField" name="rutvet">
       <Properties>
         <Property name="text" type="java.lang.String" value="rutvet"/>
@@ -244,7 +282,7 @@
     <Component class="javax.swing.JLabel" name="lidmascota">
       <Properties>
         <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="ID Mascota"/>
+        <Property name="text" type="java.lang.String" value="Nro Chip"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lnombre">
@@ -263,12 +301,6 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="4"/>
         <Property name="text" type="java.lang.String" value="Fecha Nacimiento"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lidraza">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="4"/>
-        <Property name="text" type="java.lang.String" value="ID Raza"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -307,7 +339,7 @@
         <Property name="text" type="java.lang.String" value="          "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lerrorraza">
+    <Component class="javax.swing.JLabel" name="lerrorvet">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="ff" type="rgb"/>
@@ -315,12 +347,39 @@
         <Property name="text" type="java.lang.String" value="          "/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="lerrorvet">
+    <Component class="javax.swing.JComboBox" name="tipoAnimal">
       <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="ff" type="rgb"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="2">
+            <StringItem index="0" value="Perro"/>
+            <StringItem index="1" value="Gato"/>
+          </StringArray>
         </Property>
-        <Property name="text" type="java.lang.String" value="          "/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tipoAnimalActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="raza">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="Labrador"/>
+            <StringItem index="1" value="Huskie"/>
+            <StringItem index="2" value="Chihuahua"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="agregarImagen">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Quiere agregar foto de la mascota?"/>
       </Properties>
     </Component>
   </SubComponents>
