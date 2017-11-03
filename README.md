@@ -6,6 +6,6 @@ To do:
   - Estilos, titulos, etc
 
 Done: 
-    - Relacionar la mascota con el dueño
-    - Comprobar si existe id de mascota, id raza
-    - Estilos titulos mas o menos
+  - Relacionar la mascota con el dueño
+  - Comprobar si existe id de mascota, id raza
+  - Estilos titulos mas o menos
