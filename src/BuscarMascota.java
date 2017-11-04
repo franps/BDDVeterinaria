@@ -1,6 +1,7 @@
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
@@ -18,6 +19,7 @@ import javax.swing.DefaultListModel;
 public class BuscarMascota extends javax.swing.JFrame {
     BaseDeDatos1 bdd = new BaseDeDatos1();
     DefaultListModel listModel = new DefaultListModel();
+    ArrayList<String> a = new ArrayList();
     public BuscarMascota() {
         initComponents();
         listaf.setModel(listModel);
@@ -26,16 +28,18 @@ public class BuscarMascota extends javax.swing.JFrame {
     
     public void imprimirResultados(ResultSet rs, int pantalla){
         try {
+            a.clear();
             String res="";
             if (rs!=null){
                 while (rs.next()) {
                     res = rs.getString(1)+ ", " 
-                          +rs.getString(2)+ ", "
-                          +rs.getString(3)+ ", "
+                          +rs.getString(2);
+                    listModel.addElement(res);
+                    res+= ", "+rs.getString(3)+ ", "
                           +rs.getString(4)+ ", "
                           +rs.getString(5)+ ", "
-                          +rs.getString(6)+ "\n";
-                    listModel.addElement(res);
+                          +rs.getString(6);
+                    a.add(res);
                 }
             }else{
                 res = "No se encontraron mascotas para este dueño" ;
@@ -78,6 +82,7 @@ public class BuscarMascota extends javax.swing.JFrame {
         bbuscar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         listaci = new javax.swing.JList<>();
+        bverci = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         zona = new javax.swing.JTextField();
         lzona = new javax.swing.JLabel();
@@ -110,32 +115,46 @@ public class BuscarMascota extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(listaci);
 
+        bverci.setText("Ver Mascota");
+        bverci.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bverciActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lci)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bbuscar)))
-                .addContainerGap(18, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane2)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lci)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(bbuscar))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(149, 149, 149)
+                        .addComponent(bverci)))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lci)
                     .addComponent(bbuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                .addGap(5, 5, 5)
+                .addComponent(bverci)
                 .addContainerGap())
         );
 
@@ -262,6 +281,10 @@ public class BuscarMascota extends javax.swing.JFrame {
 
     }//GEN-LAST:event_buscarfActionPerformed
 
+    private void bverciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bverciActionPerformed
+        new VerMascota(a.get(listaci.getSelectedIndex())).setVisible(true);
+    }//GEN-LAST:event_bverciActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -300,6 +323,7 @@ public class BuscarMascota extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bbuscar;
     private javax.swing.JButton buscarf;
+    private javax.swing.JButton bverci;
     private javax.swing.JTextField cedula;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
