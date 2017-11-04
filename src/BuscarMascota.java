@@ -3,6 +3,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,9 +17,11 @@ import java.util.logging.Logger;
  */
 public class BuscarMascota extends javax.swing.JFrame {
     BaseDeDatos1 bdd = new BaseDeDatos1();
-    
+    DefaultListModel listModel = new DefaultListModel();
     public BuscarMascota() {
         initComponents();
+        listaf.setModel(listModel);
+        listaci.setModel(listModel);
     }
     
     public void imprimirResultados(ResultSet rs, int pantalla){
@@ -26,18 +29,17 @@ public class BuscarMascota extends javax.swing.JFrame {
             String res="";
             if (rs!=null){
                 while (rs.next()) {
-                    res += rs.getString(1)+ ", " 
+                    res = rs.getString(1)+ ", " 
                           +rs.getString(2)+ ", "
                           +rs.getString(3)+ ", "
                           +rs.getString(4)+ ", "
                           +rs.getString(5)+ ", "
                           +rs.getString(6)+ "\n";
+                    listModel.addElement(res);
                 }
             }else{
                 res = "No se encontraron mascotas para este dueño" ;
             }
-            if (pantalla == 0 ) resultado.setText(res);
-            else resultadof.setText(res);
         } catch (SQLException ex) {
             Logger.getLogger(IngresoMascota.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -74,16 +76,16 @@ public class BuscarMascota extends javax.swing.JFrame {
         lci = new javax.swing.JLabel();
         cedula = new javax.swing.JTextField();
         bbuscar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        resultado = new javax.swing.JTextArea();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listaci = new javax.swing.JList<>();
         jPanel2 = new javax.swing.JPanel();
         zona = new javax.swing.JTextField();
         lzona = new javax.swing.JLabel();
         tipoAnimal = new javax.swing.JComboBox<>();
         raza = new javax.swing.JComboBox<>();
         buscarf = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        resultadof = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        listaf = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,9 +108,7 @@ public class BuscarMascota extends javax.swing.JFrame {
             }
         });
 
-        resultado.setColumns(20);
-        resultado.setRows(5);
-        jScrollPane1.setViewportView(resultado);
+        jScrollPane2.setViewportView(listaci);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -117,7 +117,7 @@ public class BuscarMascota extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lci)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -135,13 +135,12 @@ public class BuscarMascota extends javax.swing.JFrame {
                     .addComponent(lci)
                     .addComponent(bbuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jTabbedPane2.addTab("Buscar mis mascotas", jPanel1);
 
-        zona.setText("*");
         zona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 zonaActionPerformed(evt);
@@ -166,9 +165,7 @@ public class BuscarMascota extends javax.swing.JFrame {
             }
         });
 
-        resultadof.setColumns(20);
-        resultadof.setRows(5);
-        jScrollPane2.setViewportView(resultadof);
+        jScrollPane3.setViewportView(listaf);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -189,7 +186,7 @@ public class BuscarMascota extends javax.swing.JFrame {
                 .addContainerGap(35, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2)
+                .addComponent(jScrollPane3)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -204,8 +201,8 @@ public class BuscarMascota extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tipoAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(raza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -242,7 +239,9 @@ public class BuscarMascota extends javax.swing.JFrame {
 
     private void bbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbuscarActionPerformed
         ResultSet rs = bdd.enviarConsulta("select * from mascota where idmascota in "
-                + "(select id_mascota from dueñomascota where ci_dueño = "+cedula.getText()+")");
+               + "(select id_mascota from denuncia where id_mascota in "
+                + "(select id_mascota from dueñomascota where ci_dueño = "+cedula.getText()+") "
+                + "and tipo_denuncia = 1)");
         imprimirResultados(rs,0);
     }//GEN-LAST:event_bbuscarActionPerformed
 
@@ -305,14 +304,14 @@ public class BuscarMascota extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JLabel lci;
+    private javax.swing.JList<String> listaci;
+    private javax.swing.JList<String> listaf;
     private javax.swing.JLabel lzona;
     private javax.swing.JComboBox<String> raza;
-    private javax.swing.JTextArea resultado;
-    private javax.swing.JTextArea resultadof;
     private javax.swing.JComboBox<String> tipoAnimal;
     private javax.swing.JTextField zona;
     // End of variables declaration//GEN-END:variables
