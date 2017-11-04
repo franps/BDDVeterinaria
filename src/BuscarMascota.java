@@ -29,6 +29,7 @@ public class BuscarMascota extends javax.swing.JFrame {
     public void imprimirResultados(ResultSet rs, int pantalla){
         try {
             a.clear();
+            listModel.clear();
             String res="";
             if (rs!=null){
                 while (rs.next()) {
@@ -258,7 +259,7 @@ public class BuscarMascota extends javax.swing.JFrame {
 
     private void bbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbuscarActionPerformed
         ResultSet rs = bdd.enviarConsulta("select * from mascota where idmascota in "
-               + "(select id_mascota from denuncia where id_mascota in "
+                + "(select id_mascota from denuncia where id_mascota in "
                 + "(select id_mascota from dueñomascota where ci_dueño = "+cedula.getText()+") "
                 + "and tipo_denuncia = 1)");
         imprimirResultados(rs,0);

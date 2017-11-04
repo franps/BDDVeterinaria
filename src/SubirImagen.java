@@ -43,6 +43,7 @@ public class SubirImagen extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         idlabel = new javax.swing.JLabel();
         lIDMascota = new javax.swing.JLabel();
+        listo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -65,44 +66,48 @@ public class SubirImagen extends javax.swing.JFrame {
 
         lIDMascota.setText("ID Mascota:");
 
+        listo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        listo.setForeground(new java.awt.Color(0, 255, 51));
+        listo.setText("        ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(imagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(145, 145, 145)
-                .addComponent(subir)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(lIDMascota)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(idlabel)
-                .addGap(38, 38, 38))
+                        .addComponent(jLabel1)
+                        .addGap(36, 36, 36)
+                        .addComponent(lIDMascota)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(idlabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(subir)
+                                .addGap(28, 28, 28)
+                                .addComponent(listo))
+                            .addComponent(imagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(lIDMascota)
+                    .addComponent(idlabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(imagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(subir)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(idlabel)
-                            .addComponent(lIDMascota))
-                        .addGap(22, 22, 22))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(subir)
+                    .addComponent(listo))
+                .addGap(17, 17, 17))
         );
 
         pack();
@@ -136,6 +141,8 @@ public class SubirImagen extends javax.swing.JFrame {
             ps2.close();
             rs.close();
             fis.close();
+            listo.setText("Foto agregada correctamente");
+            subir.setVisible(false);
         } catch (IOException ex) {
             Logger.getLogger(SubirImagen.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
@@ -189,6 +196,7 @@ public class SubirImagen extends javax.swing.JFrame {
     private javax.swing.JLabel imagen1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lIDMascota;
+    private javax.swing.JLabel listo;
     private javax.swing.JToggleButton subir;
     // End of variables declaration//GEN-END:variables
 }

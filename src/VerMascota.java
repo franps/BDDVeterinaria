@@ -1,3 +1,17 @@
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,18 +23,63 @@
  * @author francisco.perdomo
  */
 public class VerMascota extends javax.swing.JFrame {
-
-    /**
-     * Creates new form VerMascota
-     */
+    BaseDeDatos1 bdd  = new BaseDeDatos1();
+    
     public VerMascota() {
         initComponents();
     }
     public VerMascota(String datosm) {
         initComponents();
-        datos.setText(datosm);
+        String[] lista = datosm.split(", ");
+        nrochip.setText(lista[0]);
+        datos.setText(lista[1]);
+        desc.setText(lista[2]);
+        fechanac.setText(lista[3]);
+        agregarRaza(lista[4]);
+        vet.setText(lista[5]);
+        subirfoto();
     }
-
+    
+    public void agregarRaza(String idraza){
+        int idraza1 = Integer.parseInt(idraza);
+        String[] nombres = {"Labrador","Husky","Chihuahua","Persa","Siamés","Snowshoe"};
+        raza.setText(nombres[idraza1]);
+    }
+    
+    public void subirfoto(){
+        try {
+            Connection con = null;
+            Class.forName("org.postgresql.Driver").newInstance();
+            // Obtiene una conexión a la base de datos
+            con = DriverManager.getConnection("jdbc:postgresql://192.168.56.101:5432/postgres","postgres","a");
+            if (!con.isClosed()){
+                System.out.println("Successfully connected to MySQL server using TCP/IP...");
+            } 
+            PreparedStatement ps2 = con.prepareStatement("SELECT imagen FROM imagen WHERE id = "+nrochip.getText());
+            ResultSet rs = ps2.executeQuery();
+            boolean hayFoto= rs.next();
+            if (hayFoto){
+                byte[] imgBytes = rs.getBytes(1);
+                foto.setIcon(new ImageIcon(imgBytes));
+            }else{
+                foto.setIcon(new ImageIcon("src/catdog.png"));
+                pieFoto.setText("Esta mascota no tiene foto asignada");
+            }
+            ps2.close();
+            rs.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(SubirImagen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(SubirImagen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(SubirImagen.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(SubirImagen.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,22 +89,65 @@ public class VerMascota extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        datos = new javax.swing.JLabel();
+        ldatos = new javax.swing.JLabel();
         lnrochip = new javax.swing.JLabel();
         lfechanac = new javax.swing.JLabel();
+        lraza = new javax.swing.JLabel();
+        ldesc = new javax.swing.JLabel();
+        lvet = new javax.swing.JLabel();
+        datos = new javax.swing.JLabel();
+        raza = new javax.swing.JLabel();
+        fechanac = new javax.swing.JLabel();
+        nrochip = new javax.swing.JLabel();
+        vet = new javax.swing.JLabel();
+        desc = new javax.swing.JLabel();
+        foto = new javax.swing.JLabel();
+        bresolver = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        pieFoto = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel1.setText("Datos de: ");
-
-        datos.setText("          ");
+        ldatos.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        ldatos.setText("Datos de: ");
 
         lnrochip.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         lnrochip.setText("Nro Chip: ");
 
-        lfechanac.setText("Fecha Nacimiento:");
+        lfechanac.setText("Fecha Nac:");
+
+        lraza.setText("Raza: ");
+
+        ldesc.setText("Descripción: ");
+
+        lvet.setText("Veterinaria:");
+
+        datos.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        datos.setText("    ");
+
+        raza.setText("    ");
+
+        fechanac.setText("    ");
+
+        nrochip.setText("    ");
+
+        vet.setText("    ");
+
+        desc.setText("    ");
+
+        foto.setMaximumSize(new java.awt.Dimension(200, 200));
+        foto.setMinimumSize(new java.awt.Dimension(200, 200));
+
+        bresolver.setText("Resolver denuncia");
+        bresolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bresolverActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Si recuperaste tu mascota haz click aquí :");
+
+        pieFoto.setText("      ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -54,30 +156,95 @@ public class VerMascota extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lfechanac)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lnrochip)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(datos))
-                    .addComponent(jLabel1))
-                .addContainerGap(294, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addGap(33, 33, 33)
+                        .addComponent(bresolver)
+                        .addContainerGap(116, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ldatos)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(datos))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lfechanac)
+                                    .addComponent(lraza))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fechanac)
+                                    .addComponent(raza)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(lnrochip)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nrochip))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lvet)
+                                    .addComponent(ldesc))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(vet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(desc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(foto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pieFoto)
+                .addGap(97, 97, 97))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(foto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ldatos)
+                            .addComponent(datos))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lraza)
+                            .addComponent(raza))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lfechanac)
+                            .addComponent(fechanac))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lnrochip)
+                            .addComponent(nrochip))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lvet)
+                            .addComponent(vet))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ldesc)
+                            .addComponent(desc))))
+                .addGap(3, 3, 3)
+                .addComponent(pieFoto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lnrochip)
-                    .addComponent(datos))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lfechanac)
-                .addContainerGap(198, Short.MAX_VALUE))
+                    .addComponent(bresolver)
+                    .addComponent(jLabel1))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bresolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bresolverActionPerformed
+       // bdd.enviarConsulta("UPDATE denuncia SET fecharesolucion = '4/11/2017',"
+         //       + "personaresponsable =" +  + "where nrodenuncia = "+ );
+    }//GEN-LAST:event_bresolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -115,9 +282,21 @@ public class VerMascota extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bresolver;
     private javax.swing.JLabel datos;
+    private javax.swing.JLabel desc;
+    private javax.swing.JLabel fechanac;
+    private javax.swing.JLabel foto;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel ldatos;
+    private javax.swing.JLabel ldesc;
     private javax.swing.JLabel lfechanac;
     private javax.swing.JLabel lnrochip;
+    private javax.swing.JLabel lraza;
+    private javax.swing.JLabel lvet;
+    private javax.swing.JLabel nrochip;
+    private javax.swing.JLabel pieFoto;
+    private javax.swing.JLabel raza;
+    private javax.swing.JLabel vet;
     // End of variables declaration//GEN-END:variables
 }
