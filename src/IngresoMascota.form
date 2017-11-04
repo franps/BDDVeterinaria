@@ -108,29 +108,26 @@
                           <Component id="lcidueño" min="-2" pref="88" max="-2" attributes="0"/>
                           <Component id="lidmascota" min="-2" pref="78" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="rutvet" max="32767" attributes="0"/>
-                              <Component id="cidueño" min="-2" pref="200" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="idmascota" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                          <Component id="agregarImagen" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lerrorci" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lerrorvet" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lerrormascota" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="insertar" min="-2" max="-2" attributes="0"/>
                   </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="rutvet" max="32767" attributes="0"/>
+                      <Component id="cidueño" min="-2" pref="200" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="idmascota" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                  <Component id="agregarImagen" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lerrorci" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lerrorvet" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lerrormascota" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
@@ -191,10 +188,11 @@
                   </Group>
               </Group>
               <EmptySpace pref="10" max="32767" attributes="0"/>
-              <Component id="agregarImagen" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="insertar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="agregarImagen" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="insertar" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="listar" min="-2" max="-2" attributes="0"/>
