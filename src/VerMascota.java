@@ -24,12 +24,15 @@ import javax.swing.JFileChooser;
  */
 public class VerMascota extends javax.swing.JFrame {
     BaseDeDatos1 bdd  = new BaseDeDatos1();
+    int nroDenuncia = 0;
     
     public VerMascota() {
         initComponents();
     }
     public VerMascota(String datosm) {
         initComponents();
+        textoayuda.setText("<html>Si se recuperó la mascota,<br>  ingresa la cédula de quien <br> la fue a buscar y haz click aquí :</html>");
+        System.out.println("----"+datosm);
         String[] lista = datosm.split(", ");
         nrochip.setText(lista[0]);
         datos.setText(lista[1]);
@@ -103,8 +106,9 @@ public class VerMascota extends javax.swing.JFrame {
         desc = new javax.swing.JLabel();
         foto = new javax.swing.JLabel();
         bresolver = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        textoayuda = new javax.swing.JLabel();
         pieFoto = new javax.swing.JLabel();
+        ciresponsable = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -145,7 +149,10 @@ public class VerMascota extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Si recuperaste tu mascota haz click aquí :");
+        textoayuda.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        textoayuda.setToolTipText("");
+        textoayuda.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        textoayuda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         pieFoto.setText("      ");
 
@@ -157,12 +164,13 @@ public class VerMascota extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1)
-                        .addGap(33, 33, 33)
-                        .addComponent(bresolver)
-                        .addContainerGap(116, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(textoayuda, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bresolver, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ciresponsable, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 67, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(ldatos)
@@ -190,12 +198,10 @@ public class VerMascota extends javax.swing.JFrame {
                                     .addComponent(vet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(desc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(foto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(pieFoto)
-                .addGap(97, 97, 97))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pieFoto)
+                            .addComponent(foto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,21 +235,28 @@ public class VerMascota extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(ldesc)
                             .addComponent(desc))))
-                .addGap(3, 3, 3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pieFoto)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bresolver)
-                    .addComponent(jLabel1))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(ciresponsable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bresolver)
+                        .addContainerGap(32, Short.MAX_VALUE))
+                    .addComponent(textoayuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bresolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bresolverActionPerformed
-       // bdd.enviarConsulta("UPDATE denuncia SET fecharesolucion = '4/11/2017',"
-         //       + "personaresponsable =" +  + "where nrodenuncia = "+ );
+        bdd.enviarConsulta("UPDATE denuncia SET fecharesolucion = '4/11/2017',"
+                + "personaresponsable =" + ciresponsable.getText() + "where id_mascota = "+ nrochip.getText()+" and fecharesolucion is null");
+        bresolver.setVisible(false);
+        textoayuda.setText("Denuncia resuelta");
+        ciresponsable.setVisible(false);
     }//GEN-LAST:event_bresolverActionPerformed
 
     /**
@@ -283,11 +296,11 @@ public class VerMascota extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bresolver;
+    private javax.swing.JTextField ciresponsable;
     private javax.swing.JLabel datos;
     private javax.swing.JLabel desc;
     private javax.swing.JLabel fechanac;
     private javax.swing.JLabel foto;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel ldatos;
     private javax.swing.JLabel ldesc;
     private javax.swing.JLabel lfechanac;
@@ -297,6 +310,7 @@ public class VerMascota extends javax.swing.JFrame {
     private javax.swing.JLabel nrochip;
     private javax.swing.JLabel pieFoto;
     private javax.swing.JLabel raza;
+    private javax.swing.JLabel textoayuda;
     private javax.swing.JLabel vet;
     // End of variables declaration//GEN-END:variables
 }
