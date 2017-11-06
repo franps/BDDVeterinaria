@@ -29,6 +29,7 @@ public class Menu extends javax.swing.JFrame {
         Titulo = new javax.swing.JLabel();
         bIngreso = new javax.swing.JButton();
         bdenuncia = new javax.swing.JButton();
+        bbuscar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,6 +50,13 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        bbuscar.setText("Buscar Mascota");
+        bbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bbuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -59,11 +67,13 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(156, 156, 156)
                         .addComponent(Titulo))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(137, 137, 137)
+                        .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(bIngreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bdenuncia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(146, Short.MAX_VALUE))
+                            .addComponent(bdenuncia, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(45, 45, 45)
+                        .addComponent(bbuscar)))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,7 +81,9 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(bIngreso)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bIngreso)
+                    .addComponent(bbuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(bdenuncia)
                 .addContainerGap(36, Short.MAX_VALUE))
@@ -81,14 +93,16 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bIngresoActionPerformed
-        IngresoMascota i = new IngresoMascota();
-        i.setVisible(true);
+        new IngresoMascota().setVisible(true);
     }//GEN-LAST:event_bIngresoActionPerformed
 
     private void bdenunciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdenunciaActionPerformed
-        Denuncia d = new Denuncia();
-        d.setVisible(true);
+        new Denuncia().setVisible(true);
     }//GEN-LAST:event_bdenunciaActionPerformed
+
+    private void bbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbuscarActionPerformed
+        new BuscarMascota().setVisible(true);
+    }//GEN-LAST:event_bbuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -128,6 +142,7 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Titulo;
     private javax.swing.JButton bIngreso;
+    private javax.swing.JButton bbuscar;
     private javax.swing.JButton bdenuncia;
     // End of variables declaration//GEN-END:variables
 }

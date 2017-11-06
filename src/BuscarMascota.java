@@ -264,8 +264,7 @@ public class BuscarMascota extends javax.swing.JFrame {
     }//GEN-LAST:event_tipoAnimalActionPerformed
 
     private void buscarfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarfActionPerformed
-        int razas = (tipoAnimal.getSelectedIndex()+1)*(raza.getSelectedIndex()+1)-1; //TODO ARREGLAR ESTO
-        System.out.println("-"+razas);
+        int razas = (tipoAnimal.getSelectedIndex()*3)+(raza.getSelectedIndex()); //TODO ARREGLAR ESTO
         ResultSet rs = bdd.enviarConsulta("select * from mascota where idmascota in "
             + "(select id_mascota from denuncia where zona = "+zona.getText()+" and tipo_denuncia = 1 and fecharesolucion is null) "
             + "and id_raza = " + razas);
