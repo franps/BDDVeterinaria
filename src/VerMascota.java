@@ -91,6 +91,7 @@ public class VerMascota extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Fondo = new javax.swing.JPanel();
         ldatos = new javax.swing.JLabel();
         lnrochip = new javax.swing.JLabel();
         lfechanac = new javax.swing.JLabel();
@@ -108,143 +109,138 @@ public class VerMascota extends javax.swing.JFrame {
         textoayuda = new javax.swing.JLabel();
         pieFoto = new javax.swing.JLabel();
         ciresponsable = new javax.swing.JTextField();
+        lfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        ldatos.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        Fondo.setPreferredSize(new java.awt.Dimension(500, 520));
+        Fondo.setVerifyInputWhenFocusTarget(false);
+        Fondo.setLayout(null);
+
+        ldatos.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        ldatos.setForeground(new java.awt.Color(0, 78, 150));
         ldatos.setText("Datos de: ");
+        Fondo.add(ldatos);
+        ldatos.setBounds(10, 30, 89, 21);
 
-        lnrochip.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        lnrochip.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lnrochip.setForeground(new java.awt.Color(0, 78, 150));
         lnrochip.setText("Nro Chip: ");
+        Fondo.add(lnrochip);
+        lnrochip.setBounds(20, 115, 54, 14);
 
+        lfechanac.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lfechanac.setForeground(new java.awt.Color(0, 78, 150));
         lfechanac.setText("Fecha Nac:");
+        Fondo.add(lfechanac);
+        lfechanac.setBounds(10, 90, 63, 14);
 
+        lraza.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lraza.setForeground(new java.awt.Color(0, 78, 150));
         lraza.setText("Raza: ");
+        Fondo.add(lraza);
+        lraza.setBounds(39, 65, 34, 14);
 
+        ldesc.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        ldesc.setForeground(new java.awt.Color(0, 78, 150));
         ldesc.setText("Descripción: ");
+        Fondo.add(ldesc);
+        ldesc.setBounds(10, 160, 73, 14);
 
+        lvet.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lvet.setForeground(new java.awt.Color(0, 78, 150));
         lvet.setText("Veterinaria:");
+        Fondo.add(lvet);
+        lvet.setBounds(10, 140, 66, 14);
 
-        datos.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        datos.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        datos.setForeground(new java.awt.Color(0, 78, 150));
         datos.setText("    ");
+        Fondo.add(datos);
+        datos.setBounds(105, 33, 120, 21);
 
+        raza.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        raza.setForeground(new java.awt.Color(0, 78, 150));
         raza.setText("    ");
+        Fondo.add(raza);
+        raza.setBounds(79, 65, 12, 14);
 
+        fechanac.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        fechanac.setForeground(new java.awt.Color(0, 78, 150));
         fechanac.setText("    ");
+        Fondo.add(fechanac);
+        fechanac.setBounds(79, 90, 12, 14);
 
+        nrochip.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        nrochip.setForeground(new java.awt.Color(0, 78, 150));
         nrochip.setText("    ");
+        Fondo.add(nrochip);
+        nrochip.setBounds(80, 115, 12, 14);
 
+        vet.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        vet.setForeground(new java.awt.Color(0, 78, 150));
         vet.setText("    ");
+        Fondo.add(vet);
+        vet.setBounds(89, 140, 12, 14);
 
+        desc.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        desc.setForeground(new java.awt.Color(0, 78, 150));
         desc.setText("    ");
+        Fondo.add(desc);
+        desc.setBounds(89, 160, 12, 14);
 
         foto.setMaximumSize(new java.awt.Dimension(200, 200));
         foto.setMinimumSize(new java.awt.Dimension(200, 200));
+        Fondo.add(foto);
+        foto.setBounds(190, 10, 200, 200);
 
+        bresolver.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         bresolver.setText("Resolver denuncia");
         bresolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bresolverActionPerformed(evt);
             }
         });
+        Fondo.add(bresolver);
+        bresolver.setBounds(240, 260, 137, 23);
 
+        textoayuda.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        textoayuda.setForeground(new java.awt.Color(0, 78, 150));
         textoayuda.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         textoayuda.setToolTipText("");
         textoayuda.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         textoayuda.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Fondo.add(textoayuda);
+        textoayuda.setBounds(10, 230, 200, 80);
 
+        pieFoto.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        pieFoto.setForeground(new java.awt.Color(0, 78, 150));
         pieFoto.setText("      ");
+        Fondo.add(pieFoto);
+        pieFoto.setBounds(220, 210, 160, 20);
+
+        ciresponsable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ciresponsableActionPerformed(evt);
+            }
+        });
+        Fondo.add(ciresponsable);
+        ciresponsable.setBounds(240, 290, 137, 20);
+
+        lfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuFondo.jpg"))); // NOI18N
+        lfondo.setText("    ");
+        Fondo.add(lfondo);
+        lfondo.setBounds(0, 0, 400, 320);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(textoayuda, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bresolver, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ciresponsable, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 67, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(ldatos)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(datos))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lfechanac)
-                                    .addComponent(lraza))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fechanac)
-                                    .addComponent(raza)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(lnrochip)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nrochip))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lvet)
-                                    .addComponent(ldesc))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(vet, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(desc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pieFoto)
-                            .addComponent(foto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
+            .addComponent(Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(foto, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ldatos)
-                            .addComponent(datos))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lraza)
-                            .addComponent(raza))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lfechanac)
-                            .addComponent(fechanac))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lnrochip)
-                            .addComponent(nrochip))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lvet)
-                            .addComponent(vet))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ldesc)
-                            .addComponent(desc))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pieFoto)
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(ciresponsable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(bresolver)
-                        .addContainerGap(32, Short.MAX_VALUE))
-                    .addComponent(textoayuda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addComponent(Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -257,6 +253,10 @@ public class VerMascota extends javax.swing.JFrame {
         textoayuda.setText("Denuncia resuelta");
         ciresponsable.setVisible(false);
     }//GEN-LAST:event_bresolverActionPerformed
+
+    private void ciresponsableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ciresponsableActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ciresponsableActionPerformed
 
     /**
      * @param args the command line arguments
@@ -294,6 +294,7 @@ public class VerMascota extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Fondo;
     private javax.swing.JButton bresolver;
     private javax.swing.JTextField ciresponsable;
     private javax.swing.JLabel datos;
@@ -303,6 +304,7 @@ public class VerMascota extends javax.swing.JFrame {
     private javax.swing.JLabel ldatos;
     private javax.swing.JLabel ldesc;
     private javax.swing.JLabel lfechanac;
+    private javax.swing.JLabel lfondo;
     private javax.swing.JLabel lnrochip;
     private javax.swing.JLabel lraza;
     private javax.swing.JLabel lvet;

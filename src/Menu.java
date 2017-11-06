@@ -110,7 +110,7 @@ public class Menu extends javax.swing.JFrame {
 
         lfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuFondo.jpg"))); // NOI18N
         Fondo.add(lfondo);
-        lfondo.setBounds(0, 0, 400, 330);
+        lfondo.setBounds(0, 0, 400, 320);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

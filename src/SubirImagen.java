@@ -38,76 +38,71 @@ public class SubirImagen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Fondo = new javax.swing.JPanel();
         subir = new javax.swing.JToggleButton();
         imagen1 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        Titulo = new javax.swing.JLabel();
         idlabel = new javax.swing.JLabel();
         lIDMascota = new javax.swing.JLabel();
         listo = new javax.swing.JLabel();
+        lFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        Fondo.setLayout(null);
+
+        subir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         subir.setText("Subir imagen");
         subir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 subirActionPerformed(evt);
             }
         });
+        Fondo.add(subir);
+        subir.setBounds(73, 270, 110, 23);
 
         imagen1.setBackground(new java.awt.Color(255, 255, 255));
         imagen1.setText("      ");
         imagen1.setMaximumSize(new java.awt.Dimension(200, 200));
         imagen1.setMinimumSize(new java.awt.Dimension(200, 200));
+        Fondo.add(imagen1);
+        imagen1.setBounds(20, 50, 200, 200);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel1.setText("Subir Foto de Mascota");
+        Titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        Titulo.setForeground(new java.awt.Color(0, 78, 150));
+        Titulo.setText("Subir Foto de Mascota");
+        Fondo.add(Titulo);
+        Titulo.setBounds(10, 20, 230, 21);
 
         idlabel.setText("     ");
+        Fondo.add(idlabel);
+        idlabel.setBounds(290, 294, 90, 20);
 
+        lIDMascota.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lIDMascota.setText("ID Mascota:");
+        Fondo.add(lIDMascota);
+        lIDMascota.setBounds(220, 300, 70, 14);
 
         listo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         listo.setForeground(new java.awt.Color(0, 255, 51));
         listo.setText("        ");
+        Fondo.add(listo);
+        listo.setBounds(200, 270, 150, 17);
+
+        lFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuFondo.jpg"))); // NOI18N
+        lFondo.setText("   ");
+        Fondo.add(lFondo);
+        lFondo.setBounds(0, 0, 400, 320);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(36, 36, 36)
-                        .addComponent(lIDMascota)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(idlabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(subir)
-                                .addGap(28, 28, 28)
-                                .addComponent(listo))
-                            .addComponent(imagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(82, Short.MAX_VALUE))
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(lIDMascota)
-                    .addComponent(idlabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(imagen1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(subir)
-                    .addComponent(listo))
-                .addGap(17, 17, 17))
+            .addComponent(Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -192,9 +187,11 @@ public class SubirImagen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Fondo;
+    private javax.swing.JLabel Titulo;
     private javax.swing.JLabel idlabel;
     private javax.swing.JLabel imagen1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lFondo;
     private javax.swing.JLabel lIDMascota;
     private javax.swing.JLabel listo;
     private javax.swing.JToggleButton subir;
