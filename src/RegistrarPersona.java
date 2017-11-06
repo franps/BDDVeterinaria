@@ -65,6 +65,7 @@ public class RegistrarPersona extends javax.swing.JFrame {
     private void initComponents() {
 
         jProgressBar1 = new javax.swing.JProgressBar();
+        Fondo = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
         ci = new javax.swing.JTextField();
         nom = new javax.swing.JTextField();
@@ -85,146 +86,143 @@ public class RegistrarPersona extends javax.swing.JFrame {
         ast1 = new javax.swing.JLabel();
         ast2 = new javax.swing.JLabel();
         ast3 = new javax.swing.JLabel();
+        lfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        titulo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        titulo.setText("Registrar Persona");
+        Fondo.setLayout(null);
 
+        titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        titulo.setForeground(new java.awt.Color(0, 78, 150));
+        titulo.setText("Registrar Persona");
+        Fondo.add(titulo);
+        titulo.setBounds(111, 11, 215, 29);
+
+        ci.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        Fondo.add(ci);
+        ci.setBounds(111, 51, 215, 20);
+
+        nom.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         nom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nomActionPerformed(evt);
             }
         });
+        Fondo.add(nom);
+        nom.setBounds(111, 77, 215, 20);
 
+        tel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        Fondo.add(tel);
+        tel.setBounds(111, 103, 215, 20);
+
+        telalt.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         telalt.setText(" ");
+        Fondo.add(telalt);
+        telalt.setBounds(111, 129, 215, 20);
 
+        dir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         dir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dirActionPerformed(evt);
             }
         });
+        Fondo.add(dir);
+        dir.setBounds(111, 155, 215, 20);
 
+        lci.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lci.setForeground(new java.awt.Color(0, 78, 150));
         lci.setText("CI:");
+        Fondo.add(lci);
+        lci.setBounds(67, 54, 14, 14);
 
+        lnom.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lnom.setForeground(new java.awt.Color(0, 78, 150));
         lnom.setText("Nombre:");
+        Fondo.add(lnom);
+        lnom.setBounds(34, 80, 47, 14);
 
+        ltel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        ltel.setForeground(new java.awt.Color(0, 78, 150));
         ltel.setText("Teléfono:");
+        Fondo.add(ltel);
+        ltel.setBounds(29, 106, 52, 14);
 
+        ltelalt.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        ltelalt.setForeground(new java.awt.Color(0, 78, 150));
         ltelalt.setText("Teléfono alt:");
+        Fondo.add(ltelalt);
+        ltelalt.setBounds(10, 132, 69, 14);
 
+        ldir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        ldir.setForeground(new java.awt.Color(0, 78, 150));
         ldir.setText("Dirección:");
+        Fondo.add(ldir);
+        ldir.setBounds(24, 158, 57, 14);
 
+        jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         jButton1.setText("Registrar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        Fondo.add(jButton1);
+        jButton1.setBounds(133, 181, 109, 23);
 
+        lerrci.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lerrci.setForeground(new java.awt.Color(255, 0, 0));
+        Fondo.add(lerrci);
+        lerrci.setBounds(332, 51, 174, 20);
 
+        lerrtel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lerrtel.setForeground(new java.awt.Color(255, 0, 0));
+        Fondo.add(lerrtel);
+        lerrtel.setBounds(332, 103, 174, 20);
 
+        lerrnom.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lerrnom.setForeground(new java.awt.Color(255, 0, 0));
+        Fondo.add(lerrnom);
+        lerrnom.setBounds(332, 77, 174, 20);
 
+        lerrdir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lerrdir.setForeground(new java.awt.Color(255, 0, 0));
+        Fondo.add(lerrdir);
+        lerrdir.setBounds(332, 155, 174, 20);
 
         ast.setForeground(new java.awt.Color(255, 0, 0));
         ast.setText("*");
+        Fondo.add(ast);
+        ast.setBounds(87, 54, 6, 14);
 
         ast1.setForeground(new java.awt.Color(255, 0, 0));
         ast1.setText("*");
+        Fondo.add(ast1);
+        ast1.setBounds(87, 80, 6, 14);
 
         ast2.setForeground(new java.awt.Color(255, 0, 0));
         ast2.setText("*");
+        Fondo.add(ast2);
+        ast2.setBounds(87, 106, 6, 14);
 
         ast3.setForeground(new java.awt.Color(255, 0, 0));
         ast3.setText("*");
+        Fondo.add(ast3);
+        ast3.setBounds(87, 158, 6, 14);
+
+        lfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoPersona.jpg"))); // NOI18N
+        lfondo.setText("    ");
+        Fondo.add(lfondo);
+        lfondo.setBounds(-4, 1, 540, 230);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lci)
-                                    .addComponent(lnom)
-                                    .addComponent(ltel)
-                                    .addComponent(ldir))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(ast)
-                                    .addComponent(ast1)
-                                    .addComponent(ast2, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ast3, javax.swing.GroupLayout.Alignment.LEADING)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(ltelalt)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(telalt, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tel, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nom, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ci, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(titulo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(dir))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lerrnom, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
-                            .addComponent(lerrci, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lerrdir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lerrtel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jButton1)))
-                .addContainerGap())
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ci, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lci)
-                    .addComponent(lerrci, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ast))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lnom)
-                            .addComponent(ast1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(tel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(ltel)
-                                .addComponent(ast2))
-                            .addComponent(lerrtel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(telalt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ltelalt))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(dir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(ldir)
-                                .addComponent(ast3))
-                            .addComponent(lerrdir, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(lerrnom, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(35, Short.MAX_VALUE))
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
         );
 
         pack();
@@ -271,10 +269,6 @@ public class RegistrarPersona extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(RegistrarPersona.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new RegistrarPersona().setVisible(true);
@@ -283,6 +277,7 @@ public class RegistrarPersona extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Fondo;
     private javax.swing.JLabel ast;
     private javax.swing.JLabel ast1;
     private javax.swing.JLabel ast2;
@@ -297,6 +292,7 @@ public class RegistrarPersona extends javax.swing.JFrame {
     private javax.swing.JLabel lerrdir;
     private javax.swing.JLabel lerrnom;
     private javax.swing.JLabel lerrtel;
+    private javax.swing.JLabel lfondo;
     private javax.swing.JLabel lnom;
     private javax.swing.JLabel ltel;
     private javax.swing.JLabel ltelalt;

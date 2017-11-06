@@ -86,28 +86,30 @@ public class Denuncia extends javax.swing.JFrame {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        Fondo = new javax.swing.JPanel();
         Titulo = new javax.swing.JLabel();
         lcidenunciante = new javax.swing.JLabel();
         fecha = new javax.swing.JFormattedTextField();
         nrodenuncia = new javax.swing.JTextField();
         rutvet = new javax.swing.JTextField();
-        lerrorci = new javax.swing.JLabel();
         cidenunciante = new javax.swing.JTextField();
-        lerrormascota = new javax.swing.JLabel();
         lidmascota = new javax.swing.JLabel();
         lzona = new javax.swing.JLabel();
-        lerrorvet = new javax.swing.JLabel();
         insertar = new javax.swing.JButton();
         lfecha = new javax.swing.JLabel();
         zona = new javax.swing.JTextField();
         lidraza = new javax.swing.JLabel();
         idmascota = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lrut = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         resultado = new javax.swing.JTextArea();
         listar = new javax.swing.JButton();
         tipoDenuncia = new javax.swing.JComboBox<>();
+        lerrormascota = new javax.swing.JLabel();
+        lerrorci = new javax.swing.JLabel();
+        lerrorvet = new javax.swing.JLabel();
         lerrordenuncia = new javax.swing.JLabel();
+        lfondo = new javax.swing.JLabel();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -118,11 +120,20 @@ public class Denuncia extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        Titulo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        Titulo.setText("Ingresar Denuncia");
+        Fondo.setLayout(null);
 
+        Titulo.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        Titulo.setForeground(new java.awt.Color(0, 78, 150));
+        Titulo.setText("Ingresar Denuncia");
+        Fondo.add(Titulo);
+        Titulo.setBounds(103, 11, 197, 29);
+
+        lcidenunciante.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lcidenunciante.setForeground(new java.awt.Color(0, 78, 150));
         lcidenunciante.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lcidenunciante.setText("CI Denunciante");
+        Fondo.add(lcidenunciante);
+        lcidenunciante.setBounds(30, 90, 100, 20);
 
         try {
             fecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -131,74 +142,114 @@ public class Denuncia extends javax.swing.JFrame {
         }
         fecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         fecha.setText("01/01/2017");
+        fecha.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fechaActionPerformed(evt);
             }
         });
+        Fondo.add(fecha);
+        fecha.setBounds(480, 120, 90, 20);
 
+        nrodenuncia.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         nrodenuncia.setText("nro denuncia");
+        Fondo.add(nrodenuncia);
+        nrodenuncia.setBounds(140, 180, 210, 20);
 
+        rutvet.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         rutvet.setText("rutvet");
+        Fondo.add(rutvet);
+        rutvet.setBounds(140, 150, 210, 20);
 
-        lerrorci.setForeground(new java.awt.Color(255, 0, 0));
-        lerrorci.setText("          ");
-
+        cidenunciante.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         cidenunciante.setText("cidenunciante");
         cidenunciante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cidenuncianteActionPerformed(evt);
             }
         });
+        Fondo.add(cidenunciante);
+        cidenunciante.setBounds(140, 90, 210, 20);
 
-        lerrormascota.setForeground(new java.awt.Color(255, 0, 0));
-        lerrormascota.setText("          ");
-
+        lidmascota.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lidmascota.setForeground(new java.awt.Color(0, 78, 150));
         lidmascota.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lidmascota.setText("ID Mascota");
+        Fondo.add(lidmascota);
+        lidmascota.setBounds(40, 60, 90, 20);
 
+        lzona.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lzona.setForeground(new java.awt.Color(0, 78, 150));
         lzona.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lzona.setText("Zona perdido");
+        Fondo.add(lzona);
+        lzona.setBounds(40, 210, 90, 20);
 
-        lerrorvet.setForeground(new java.awt.Color(255, 0, 0));
-        lerrorvet.setText("          ");
-
+        insertar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         insertar.setText("Ingresar Denuncia");
         insertar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 insertarActionPerformed(evt);
             }
         });
+        Fondo.add(insertar);
+        insertar.setBounds(160, 260, 150, 23);
 
+        lfecha.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lfecha.setForeground(new java.awt.Color(0, 78, 150));
         lfecha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lfecha.setText("Fecha Perdido");
+        Fondo.add(lfecha);
+        lfecha.setBounds(370, 120, 100, 14);
 
+        zona.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         zona.setText("zona");
         zona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 zonaActionPerformed(evt);
             }
         });
+        Fondo.add(zona);
+        zona.setBounds(140, 210, 210, 20);
 
+        lidraza.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lidraza.setForeground(new java.awt.Color(0, 78, 150));
         lidraza.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lidraza.setText("Nro Denuncia");
+        Fondo.add(lidraza);
+        lidraza.setBounds(20, 180, 110, 20);
 
+        idmascota.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         idmascota.setText("idmascota");
+        Fondo.add(idmascota);
+        idmascota.setBounds(140, 60, 210, 20);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("RUT Veterinaria");
+        lrut.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lrut.setForeground(new java.awt.Color(0, 78, 150));
+        lrut.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lrut.setText("RUT Veterinaria");
+        Fondo.add(lrut);
+        lrut.setBounds(20, 150, 110, 20);
 
         resultado.setColumns(20);
+        resultado.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
         resultado.setRows(5);
         jScrollPane1.setViewportView(resultado);
 
+        Fondo.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 310, 620, 86);
+
+        listar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         listar.setText("Listar denuncias");
         listar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listarActionPerformed(evt);
             }
         });
+        Fondo.add(listar);
+        listar.setBounds(250, 400, 150, 23);
 
+        tipoDenuncia.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         tipoDenuncia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perdí mi mascota", "Encontré una mascota" }));
         tipoDenuncia.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -210,116 +261,47 @@ public class Denuncia extends javax.swing.JFrame {
                 tipoDenunciaActionPerformed(evt);
             }
         });
+        Fondo.add(tipoDenuncia);
+        tipoDenuncia.setBounds(140, 120, 210, 20);
 
+        lerrormascota.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lerrormascota.setForeground(new java.awt.Color(255, 0, 0));
+        lerrormascota.setText("          ");
+        Fondo.add(lerrormascota);
+        lerrormascota.setBounds(360, 60, 270, 20);
+
+        lerrorci.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lerrorci.setForeground(new java.awt.Color(255, 0, 0));
+        lerrorci.setText("          ");
+        Fondo.add(lerrorci);
+        lerrorci.setBounds(360, 90, 270, 20);
+
+        lerrorvet.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lerrorvet.setForeground(new java.awt.Color(255, 0, 0));
+        lerrorvet.setText("          ");
+        Fondo.add(lerrorvet);
+        lerrorvet.setBounds(360, 150, 280, 20);
+
+        lerrordenuncia.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lerrordenuncia.setForeground(new java.awt.Color(255, 0, 0));
         lerrordenuncia.setText("          ");
+        Fondo.add(lerrordenuncia);
+        lerrordenuncia.setBounds(360, 180, 290, 20);
+
+        lfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoMasc.jpg"))); // NOI18N
+        lfondo.setText("     ");
+        Fondo.add(lfondo);
+        lfondo.setBounds(0, 0, 660, 520);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(Titulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(44, 44, 44)
-                                        .addComponent(lzona, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(lcidenunciante, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cidenunciante, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(zona, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tipoDenuncia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lidmascota, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(idmascota, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lidraza, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(nrodenuncia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lerrormascota)
-                            .addComponent(lerrorci)
-                            .addComponent(lerrordenuncia)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lfecha, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(221, 221, 221)
-                        .addComponent(listar, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rutvet, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lerrorvet))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(insertar)))
-                .addContainerGap(56, Short.MAX_VALUE))
+            .addComponent(Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(lerrorvet)
-                            .addComponent(rutvet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(11, 11, 11))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lidmascota)
-                            .addComponent(idmascota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lerrormascota))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cidenunciante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lcidenunciante)
-                            .addComponent(lerrorci))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tipoDenuncia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lfecha))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lidraza)
-                            .addComponent(nrodenuncia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lerrordenuncia))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(zona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lzona))
-                        .addGap(39, 39, 39)))
-                .addComponent(insertar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(listar)
-                .addContainerGap(43, Short.MAX_VALUE))
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
         );
 
         pack();
@@ -409,12 +391,12 @@ public class Denuncia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Fondo;
     private javax.swing.JLabel Titulo;
     private javax.swing.JTextField cidenunciante;
     private javax.swing.JFormattedTextField fecha;
     private javax.swing.JTextField idmascota;
     private javax.swing.JButton insertar;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -424,9 +406,11 @@ public class Denuncia extends javax.swing.JFrame {
     private javax.swing.JLabel lerrormascota;
     private javax.swing.JLabel lerrorvet;
     private javax.swing.JLabel lfecha;
+    private javax.swing.JLabel lfondo;
     private javax.swing.JLabel lidmascota;
     private javax.swing.JLabel lidraza;
     private javax.swing.JButton listar;
+    private javax.swing.JLabel lrut;
     private javax.swing.JLabel lzona;
     private javax.swing.JTextField nrodenuncia;
     private javax.swing.JTextArea resultado;

@@ -26,79 +26,101 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Fondo = new javax.swing.JPanel();
         Titulo = new javax.swing.JLabel();
         bIngreso = new javax.swing.JButton();
         bdenuncia = new javax.swing.JButton();
         bbuscar = new javax.swing.JButton();
         bregper = new javax.swing.JButton();
+        iper = new javax.swing.JLabel();
+        imas = new javax.swing.JLabel();
+        ibus = new javax.swing.JLabel();
+        iden = new javax.swing.JLabel();
+        lfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Titulo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        Titulo.setText("Menu");
+        Fondo.setMaximumSize(new java.awt.Dimension(400, 320));
+        Fondo.setMinimumSize(new java.awt.Dimension(400, 320));
+        Fondo.setPreferredSize(new java.awt.Dimension(400, 320));
+        Fondo.setRequestFocusEnabled(false);
+        Fondo.setLayout(null);
 
+        Titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 36)); // NOI18N
+        Titulo.setForeground(new java.awt.Color(0, 78, 150));
+        Titulo.setText("Menu");
+        Fondo.add(Titulo);
+        Titulo.setBounds(80, 30, 110, 50);
+
+        bIngreso.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         bIngreso.setText("Ingresar Mascota");
         bIngreso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bIngresoActionPerformed(evt);
             }
         });
+        Fondo.add(bIngreso);
+        bIngreso.setBounds(50, 110, 140, 20);
 
+        bdenuncia.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         bdenuncia.setText("Hacer Denuncia");
         bdenuncia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bdenunciaActionPerformed(evt);
             }
         });
+        Fondo.add(bdenuncia);
+        bdenuncia.setBounds(50, 150, 140, 20);
 
+        bbuscar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         bbuscar.setText("Buscar Mascota");
         bbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bbuscarActionPerformed(evt);
             }
         });
+        Fondo.add(bbuscar);
+        bbuscar.setBounds(50, 190, 140, 20);
 
+        bregper.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         bregper.setText("Registrar Persona");
         bregper.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bregperActionPerformed(evt);
             }
         });
+        Fondo.add(bregper);
+        bregper.setBounds(50, 230, 140, 20);
+
+        iper.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/persona.jpg"))); // NOI18N
+        Fondo.add(iper);
+        iper.setBounds(200, 230, 20, 20);
+
+        imas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pata.jpg"))); // NOI18N
+        Fondo.add(imas);
+        imas.setBounds(200, 110, 20, 20);
+
+        ibus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa.jpg"))); // NOI18N
+        Fondo.add(ibus);
+        ibus.setBounds(200, 190, 20, 20);
+
+        iden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/exclamacion.jpg"))); // NOI18N
+        Fondo.add(iden);
+        iden.setBounds(200, 150, 20, 20);
+
+        lfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menuFondo.jpg"))); // NOI18N
+        Fondo.add(lfondo);
+        lfondo.setBounds(0, 0, 400, 330);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(Titulo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(bIngreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bdenuncia, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(bregper, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bbuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(70, Short.MAX_VALUE))
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bIngreso)
-                    .addComponent(bbuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bdenuncia)
-                    .addComponent(bregper))
-                .addContainerGap(36, Short.MAX_VALUE))
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -156,10 +178,16 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Fondo;
     private javax.swing.JLabel Titulo;
     private javax.swing.JButton bIngreso;
     private javax.swing.JButton bbuscar;
     private javax.swing.JButton bdenuncia;
     private javax.swing.JButton bregper;
+    private javax.swing.JLabel ibus;
+    private javax.swing.JLabel iden;
+    private javax.swing.JLabel imas;
+    private javax.swing.JLabel iper;
+    private javax.swing.JLabel lfondo;
     // End of variables declaration//GEN-END:variables
 }

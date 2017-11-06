@@ -95,6 +95,7 @@ public class IngresoMascota extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        Fondo = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         resultado = new javax.swing.JTextArea();
         insertar = new javax.swing.JButton();
@@ -118,6 +119,7 @@ public class IngresoMascota extends javax.swing.JFrame {
         tipoAnimal = new javax.swing.JComboBox<>();
         raza = new javax.swing.JComboBox<>();
         agregarImagen = new javax.swing.JCheckBox();
+        lFondo = new javax.swing.JLabel();
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -127,35 +129,55 @@ public class IngresoMascota extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        Fondo.setLayout(null);
+
         resultado.setColumns(20);
         resultado.setRows(5);
         jScrollPane1.setViewportView(resultado);
 
+        Fondo.add(jScrollPane1);
+        jScrollPane1.setBounds(10, 384, 641, 96);
+
+        insertar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         insertar.setText("Ingresar Mascota");
         insertar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 insertarActionPerformed(evt);
             }
         });
+        Fondo.add(insertar);
+        insertar.setBounds(150, 350, 129, 23);
 
+        listar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         listar.setText("Listar Mascotas");
         listar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listarActionPerformed(evt);
             }
         });
+        Fondo.add(listar);
+        listar.setBounds(194, 486, 129, 23);
 
+        nombre.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         nombre.setText("nombre");
         nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreActionPerformed(evt);
             }
         });
+        Fondo.add(nombre);
+        nombre.setBounds(134, 51, 200, 20);
 
+        idmascota.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         idmascota.setText("nroChip");
+        Fondo.add(idmascota);
+        idmascota.setBounds(133, 229, 200, 20);
 
+        descripcion.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         descripcion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         descripcion.setText("descripcion");
+        Fondo.add(descripcion);
+        descripcion.setBounds(134, 132, 200, 86);
 
         try {
             fechanac.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -164,169 +186,130 @@ public class IngresoMascota extends javax.swing.JFrame {
         }
         fechanac.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         fechanac.setText("01/01/2017");
+        fechanac.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         fechanac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 fechanacActionPerformed(evt);
             }
         });
+        Fondo.add(fechanac);
+        fechanac.setBounds(134, 104, 79, 20);
 
+        rutvet.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         rutvet.setText("rutvet");
+        Fondo.add(rutvet);
+        rutvet.setBounds(130, 290, 200, 20);
 
+        cidueño.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         cidueño.setText("cidueño");
         cidueño.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cidueñoActionPerformed(evt);
             }
         });
+        Fondo.add(cidueño);
+        cidueño.setBounds(133, 261, 200, 20);
 
+        lidmascota.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lidmascota.setForeground(new java.awt.Color(0, 78, 150));
         lidmascota.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lidmascota.setText("Nro Chip");
+        Fondo.add(lidmascota);
+        lidmascota.setBounds(51, 232, 78, 14);
 
+        lnombre.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lnombre.setForeground(new java.awt.Color(0, 78, 150));
         lnombre.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lnombre.setText("Nombre");
+        Fondo.add(lnombre);
+        lnombre.setBounds(52, 54, 78, 14);
 
+        ldescripcion.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        ldescripcion.setForeground(new java.awt.Color(0, 78, 150));
         ldescripcion.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         ldescripcion.setText("Descripción");
+        Fondo.add(ldescripcion);
+        ldescripcion.setBounds(44, 132, 78, 14);
 
+        lfechanac.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lfechanac.setForeground(new java.awt.Color(0, 78, 150));
         lfechanac.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lfechanac.setText("Fecha Nacimiento");
+        Fondo.add(lfechanac);
+        lfechanac.setBounds(10, 107, 120, 14);
 
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 78, 150));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("RUT Veterinaria");
+        Fondo.add(jLabel1);
+        jLabel1.setBounds(35, 290, 94, 14);
 
+        lcidueño.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lcidueño.setForeground(new java.awt.Color(0, 78, 150));
         lcidueño.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lcidueño.setText("CI Dueño");
+        Fondo.add(lcidueño);
+        lcidueño.setBounds(41, 264, 88, 14);
 
-        Titulo.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        Titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        Titulo.setForeground(new java.awt.Color(0, 78, 150));
         Titulo.setText("Ingresar Mascota");
+        Fondo.add(Titulo);
+        Titulo.setBounds(134, 11, 206, 29);
 
+        lerrorci.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lerrorci.setForeground(new java.awt.Color(255, 0, 0));
         lerrorci.setText("          ");
+        Fondo.add(lerrorci);
+        lerrorci.setBounds(337, 264, 30, 14);
 
+        lerrormascota.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lerrormascota.setForeground(new java.awt.Color(255, 0, 0));
         lerrormascota.setText("          ");
+        Fondo.add(lerrormascota);
+        lerrormascota.setBounds(337, 232, 30, 14);
 
+        lerrorvet.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lerrorvet.setForeground(new java.awt.Color(255, 0, 0));
         lerrorvet.setText("          ");
+        Fondo.add(lerrorvet);
+        lerrorvet.setBounds(337, 290, 30, 14);
 
+        tipoAnimal.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         tipoAnimal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perro", "Gato" }));
         tipoAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipoAnimalActionPerformed(evt);
             }
         });
+        Fondo.add(tipoAnimal);
+        tipoAnimal.setBounds(134, 78, 79, 20);
 
+        raza.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         raza.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Labrador", "Huskie", "Chihuahua" }));
+        Fondo.add(raza);
+        raza.setBounds(219, 78, 87, 20);
 
+        agregarImagen.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         agregarImagen.setText("Quiere agregar foto de la mascota?");
+        Fondo.add(agregarImagen);
+        agregarImagen.setBounds(130, 320, 223, 23);
+
+        lFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoMasc.jpg"))); // NOI18N
+        lFondo.setText("   ");
+        Fondo.add(lFondo);
+        lFondo.setBounds(0, 0, 660, 520);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(206, 206, 206)
-                .addComponent(listar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 559, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lfechanac, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(ldescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(12, 12, 12)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(tipoAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(raza, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(fechanac, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lcidueño, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lidmascota, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(rutvet)
-                                        .addComponent(cidueño, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(idmascota, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(agregarImagen)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(21, 21, 21)
-                                        .addComponent(insertar)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lerrorci)
-                                    .addComponent(lerrorvet)
-                                    .addComponent(lerrormascota)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(143, 143, 143)
-                        .addComponent(Titulo)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(Titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lnombre))
-                        .addGap(7, 7, 7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tipoAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(raza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fechanac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(lfechanac)))
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ldescripcion)
-                    .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idmascota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lidmascota)
-                    .addComponent(lerrormascota))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cidueño, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lcidueño)
-                    .addComponent(lerrorci))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rutvet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(lerrorvet))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(agregarImagen)
-                .addGap(7, 7, 7)
-                .addComponent(insertar)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(listar)
-                .addContainerGap(14, Short.MAX_VALUE))
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
         );
 
         pack();
@@ -414,6 +397,7 @@ public class IngresoMascota extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Fondo;
     private javax.swing.JLabel Titulo;
     private javax.swing.JCheckBox agregarImagen;
     private javax.swing.JTextField cidueño;
@@ -426,6 +410,7 @@ public class IngresoMascota extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lFondo;
     private javax.swing.JLabel lcidueño;
     private javax.swing.JLabel ldescripcion;
     private javax.swing.JLabel lerrorci;

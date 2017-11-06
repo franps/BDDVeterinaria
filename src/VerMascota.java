@@ -32,7 +32,6 @@ public class VerMascota extends javax.swing.JFrame {
     public VerMascota(String datosm) {
         initComponents();
         textoayuda.setText("<html>Si se recuperó la mascota,<br>  ingresa la cédula de quien <br> la fue a buscar y haz click aquí :</html>");
-        System.out.println("----"+datosm);
         String[] lista = datosm.split(", ");
         nrochip.setText(lista[0]);
         datos.setText(lista[1]);
@@ -65,7 +64,7 @@ public class VerMascota extends javax.swing.JFrame {
                 byte[] imgBytes = rs.getBytes(1);
                 foto.setIcon(new ImageIcon(imgBytes));
             }else{
-                foto.setIcon(new ImageIcon("src/catdog.png"));
+                foto.setIcon(new ImageIcon("src/imagenes/catdog.png"));
                 pieFoto.setText("Esta mascota no tiene foto asignada");
             }
             ps2.close();
