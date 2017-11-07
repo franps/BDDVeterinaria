@@ -65,6 +65,26 @@ public class BuscarMascota extends javax.swing.JFrame {
         }
         
     }
+    public boolean chequearCI(){
+        boolean resultado = true;
+        if (cedula.getText().compareTo("")!=0){
+            try {
+                errorci.setText("");
+                ResultSet rs = bdd.enviarConsulta("SELECT * FROM persona where ci="+cedula.getText());
+                if (!rs.next()) {
+                    errorci.setText("Ese usuario no está en el sistema");
+                    resultado = false;
+                }             
+            } catch (SQLException ex) {
+                Logger.getLogger(BuscarMascota.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+        }else{
+            errorci.setText("La cédula no puede ser vacía");
+            resultado = false;
+        }
+        return resultado;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -83,6 +103,7 @@ public class BuscarMascota extends javax.swing.JFrame {
         lci = new javax.swing.JLabel();
         cedula = new javax.swing.JTextField();
         bbuscar = new javax.swing.JButton();
+        errorci = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         zona = new javax.swing.JTextField();
         lzona = new javax.swing.JLabel();
@@ -101,20 +122,28 @@ public class BuscarMascota extends javax.swing.JFrame {
         Fondo.add(jScrollPane2);
         jScrollPane2.setBounds(30, 150, 306, 109);
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 78, 150));
         jLabel1.setText("Buscar Mascota");
         Fondo.add(jLabel1);
-        jLabel1.setBounds(121, 11, 129, 22);
+        jLabel1.setBounds(40, 11, 210, 21);
 
+        jTabbedPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jTabbedPane2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        lci.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lci.setText("Ingresa tu cédula");
 
-        cedula.setText("cedula");
+        cedula.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         cedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cedulaActionPerformed(evt);
             }
         });
 
+        bbuscar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         bbuscar.setText("Buscar");
         bbuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,18 +151,26 @@ public class BuscarMascota extends javax.swing.JFrame {
             }
         });
 
+        errorci.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        errorci.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lci)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(bbuscar)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lci)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bbuscar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(errorci, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -143,10 +180,14 @@ public class BuscarMascota extends javax.swing.JFrame {
                     .addComponent(cedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lci)
                     .addComponent(bbuscar))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(errorci, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                .addGap(5, 5, 5))
         );
 
         jTabbedPane2.addTab("Buscar mis mascotas", jPanel1);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 250));
 
         zona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,8 +195,11 @@ public class BuscarMascota extends javax.swing.JFrame {
             }
         });
 
+        lzona.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lzona.setForeground(new java.awt.Color(0, 78, 150));
         lzona.setText("Indica Zona");
 
+        tipoAnimal.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         tipoAnimal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perro", "Gato" }));
         tipoAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,8 +207,10 @@ public class BuscarMascota extends javax.swing.JFrame {
             }
         });
 
+        raza.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         raza.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Labrador", "Huskie", "Chihuahua" }));
 
+        buscarf.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         buscarf.setText("Buscar");
         buscarf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,7 +234,7 @@ public class BuscarMascota extends javax.swing.JFrame {
                     .addComponent(zona, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(buscarf)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,6 +256,7 @@ public class BuscarMascota extends javax.swing.JFrame {
         Fondo.add(jTabbedPane2);
         jTabbedPane2.setBounds(10, 39, 400, 99);
 
+        bverMasc.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         bverMasc.setText("Ver mascota");
         bverMasc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,7 +264,7 @@ public class BuscarMascota extends javax.swing.JFrame {
             }
         });
         Fondo.add(bverMasc);
-        bverMasc.setBounds(330, 280, 91, 23);
+        bverMasc.setBounds(250, 270, 160, 23);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoBuscar.jpg"))); // NOI18N
         jLabel2.setText("   ");
@@ -243,11 +290,14 @@ public class BuscarMascota extends javax.swing.JFrame {
     }//GEN-LAST:event_cedulaActionPerformed
 
     private void bbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbuscarActionPerformed
-        ResultSet rs = bdd.enviarConsulta("select * from mascota where idmascota in "
-                + "(select id_mascota from denuncia where id_mascota in "
-                + "(select id_mascota from dueñomascota where ci_dueño = "+cedula.getText()+") "
-                + "and tipo_denuncia = 1 and fecharesolucion is null)");
-        imprimirResultados(rs);
+        boolean chequeo = chequearCI();
+        if (chequeo){
+            ResultSet rs = bdd.enviarConsulta("select * from mascota where idmascota in "
+                    + "(select id_mascota from denuncia where id_mascota in "
+                    + "(select id_mascota from dueñomascota where ci_dueño = "+cedula.getText()+") "
+                    + "and tipo_denuncia = 1 and fecharesolucion is null)");
+            imprimirResultados(rs);
+        }
     }//GEN-LAST:event_bbuscarActionPerformed
 
     private void zonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zonaActionPerformed
@@ -303,6 +353,7 @@ public class BuscarMascota extends javax.swing.JFrame {
     private javax.swing.JButton buscarf;
     private javax.swing.JButton bverMasc;
     private javax.swing.JTextField cedula;
+    private javax.swing.JLabel errorci;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

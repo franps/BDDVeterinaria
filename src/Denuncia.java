@@ -152,17 +152,14 @@ public class Denuncia extends javax.swing.JFrame {
         fecha.setBounds(480, 120, 90, 20);
 
         nrodenuncia.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
-        nrodenuncia.setText("nro denuncia");
         Fondo.add(nrodenuncia);
         nrodenuncia.setBounds(140, 180, 210, 20);
 
         rutvet.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
-        rutvet.setText("rutvet");
         Fondo.add(rutvet);
         rutvet.setBounds(140, 150, 210, 20);
 
         cidenunciante.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
-        cidenunciante.setText("cidenunciante");
         cidenunciante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cidenuncianteActionPerformed(evt);
@@ -203,7 +200,6 @@ public class Denuncia extends javax.swing.JFrame {
         lfecha.setBounds(370, 120, 100, 14);
 
         zona.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
-        zona.setText("zona");
         zona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 zonaActionPerformed(evt);
@@ -220,7 +216,6 @@ public class Denuncia extends javax.swing.JFrame {
         lidraza.setBounds(20, 180, 110, 20);
 
         idmascota.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
-        idmascota.setText("idmascota");
         Fondo.add(idmascota);
         idmascota.setBounds(140, 60, 210, 20);
 

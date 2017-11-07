@@ -159,7 +159,6 @@ public class IngresoMascota extends javax.swing.JFrame {
         listar.setBounds(194, 486, 129, 23);
 
         nombre.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
-        nombre.setText("nombre");
         nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreActionPerformed(evt);
@@ -169,13 +168,11 @@ public class IngresoMascota extends javax.swing.JFrame {
         nombre.setBounds(134, 51, 200, 20);
 
         idmascota.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
-        idmascota.setText("nroChip");
         Fondo.add(idmascota);
         idmascota.setBounds(133, 229, 200, 20);
 
         descripcion.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         descripcion.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        descripcion.setText("descripcion");
         Fondo.add(descripcion);
         descripcion.setBounds(134, 132, 200, 86);
 
@@ -196,12 +193,10 @@ public class IngresoMascota extends javax.swing.JFrame {
         fechanac.setBounds(134, 104, 79, 20);
 
         rutvet.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
-        rutvet.setText("rutvet");
         Fondo.add(rutvet);
         rutvet.setBounds(130, 290, 200, 20);
 
         cidueño.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
-        cidueño.setText("cidueño");
         cidueño.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cidueñoActionPerformed(evt);
@@ -243,7 +238,7 @@ public class IngresoMascota extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("RUT Veterinaria");
         Fondo.add(jLabel1);
-        jLabel1.setBounds(35, 290, 94, 14);
+        jLabel1.setBounds(30, 290, 94, 14);
 
         lcidueño.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lcidueño.setForeground(new java.awt.Color(0, 78, 150));
