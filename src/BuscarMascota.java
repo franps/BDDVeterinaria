@@ -49,22 +49,31 @@ public class BuscarMascota extends javax.swing.JFrame {
         }
     }    
     
-    private void llenarComboBoxes(int i){
+private void llenarComboBoxes(int i){
+        raza.removeItemAt(5);
+        raza.removeItemAt(4);
+        raza.removeItemAt(3);
         raza.removeItemAt(2);
         raza.removeItemAt(1);
         raza.removeItemAt(0);
         if (i==0){
-            raza.insertItemAt("Labrador", 0);
-            raza.insertItemAt("Husky", 1);
-            raza.insertItemAt("Chihuahua", 2);
-        }
+            raza.insertItemAt("Maltes", 0);
+            raza.insertItemAt("Dalmata", 1);
+            raza.insertItemAt("Cocker", 2);
+            raza.insertItemAt("Caniche", 3);
+            raza.insertItemAt("Husky", 4);
+            raza.insertItemAt("No Definido", 5);
+        }           
         else {
-            raza.insertItemAt("Persa", 0);
-            raza.insertItemAt("Siamés", 1);
-            raza.insertItemAt("Snowshoe", 2);
-        }
-        
+            raza.insertItemAt("Abisino", 0);
+            raza.insertItemAt("Bombay", 1);
+            raza.insertItemAt("Bengalí", 2);
+            raza.insertItemAt("Bosque de Noruega", 3);
+            raza.insertItemAt("British Shorthair", 4);
+            raza.insertItemAt("No Definido", 5);
+        }       
     }
+
     public boolean chequearCI(){
         boolean resultado = true;
         if (cedula.getText().compareTo("")!=0){
@@ -134,6 +143,7 @@ public class BuscarMascota extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         lci.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lci.setForeground(new java.awt.Color(0, 78, 150));
         lci.setText("Ingresa tu cédula");
 
         cedula.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
@@ -208,7 +218,7 @@ public class BuscarMascota extends javax.swing.JFrame {
         });
 
         raza.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
-        raza.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Labrador", "Huskie", "Chihuahua" }));
+        raza.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Maltes", "Dalmata", "Cocker", "Caninche", "Husky", "No Definida" }));
 
         buscarf.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         buscarf.setText("Buscar");
@@ -228,12 +238,13 @@ public class BuscarMascota extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(zona, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(buscarf))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(tipoAnimal, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(raza, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(zona, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(buscarf)
+                        .addComponent(raza, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -294,7 +305,7 @@ public class BuscarMascota extends javax.swing.JFrame {
         if (chequeo){
             ResultSet rs = bdd.enviarConsulta("select * from mascota where idmascota in "
                     + "(select id_mascota from denuncia where id_mascota in "
-                    + "(select id_mascota from dueñomascota where ci_dueño = "+cedula.getText()+") "
+                    + "(select id_mascota from dueniomascota where ci_dueño = "+cedula.getText()+") "
                     + "and tipo_denuncia = 1 and fecharesolucion is null)");
             imprimirResultados(rs);
         }
