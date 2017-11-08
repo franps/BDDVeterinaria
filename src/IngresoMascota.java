@@ -304,7 +304,7 @@ public class IngresoMascota extends javax.swing.JFrame {
         boolean chequeo = chequeoDatos();
         if (chequeo){
             try {
-                int razas = (tipoAnimal.getSelectedIndex()+1)*(raza.getSelectedIndex()+1)-1;
+                int razas = (tipoAnimal.getSelectedIndex()*6)+(raza.getSelectedIndex());
                 ResultSet rs = bdd.enviarConsulta("INSERT INTO mascota (nombre, descripcion, fechanacimiento, id_raza, rut_veterinaria) VALUES "
                         + "('"+ nombre.getText() +"',"
                                 + "'-"+ descripcion.getText() +"',"
