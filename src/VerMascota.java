@@ -26,9 +26,17 @@ public class VerMascota extends javax.swing.JFrame {
     BaseDeDatos1 bdd  = new BaseDeDatos1();
     int nroDenuncia = 0;
     
+    /**
+     *
+     */
     public VerMascota() {
         initComponents();
     }
+
+    /**
+     *
+     * @param datosm
+     */
     public VerMascota(String datosm) {
         initComponents();
         textoayuda.setText("<html>Si se recuperó la mascota,<br>  ingresa la cédula de quien <br> la fue a buscar y haz click aquí :</html>");
@@ -42,12 +50,18 @@ public class VerMascota extends javax.swing.JFrame {
         subirfoto();
     }
     
+    /**
+     *
+     * @param idraza
+     */
     public void agregarRaza(String idraza){
         int idraza1 = Integer.parseInt(idraza);
-        String[] nombres = {"Labrador","Husky","Chihuahua","Persa","Siamés","Snowshoe"};
+        String[] nombres = {"Labrador","Husky","Chihuahua","Persa","Siamés","Snowshoe","lolito"};
         raza.setText(nombres[idraza1]);
     }
-    
+    /**
+     * Metodo encargado de mostrar la foto de la mascota en pantalla cuando se muestra la denuncia.
+     */
     public void subirfoto(){
         try {
             Connection con = null;

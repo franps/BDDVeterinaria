@@ -4,7 +4,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,24 +15,34 @@ import javax.swing.DefaultListModel;
  */
 
 /**
- *
+ * Clase en donde se encuentran los metodos necesarios para la busqueda de la mascota,
+ * asi como tambien todo lo relacionado a la interfaz de usuario.
  * @author francisco.perdomo
  */
 public class BuscarMascota extends javax.swing.JFrame {
     BaseDeDatos1 bdd = new BaseDeDatos1();
     DefaultListModel listModel = new DefaultListModel();
     ArrayList<String> a = new ArrayList();
-    public BuscarMascota() {
+    
+    /**
+     * Constructor de la clase.
+     */
+    public BuscarMascota() throws SQLException {
         initComponents();
+        llenarComboBoxes2();
         listaci.setModel(listModel);
     }
     
+    /**
+     * Metodo encargado de imprimir los resultados de las consultas a la base de datos.
+     * @param rs 
+     */
     public void imprimirResultados(ResultSet rs){
         try {
             a.clear();
             listModel.clear();
             String res="";
-            if (rs!=null){
+            if (rs.next()){
                 while (rs.next()) {
                     res = rs.getString(1)+ ", " 
                           +rs.getString(2);
@@ -42,38 +54,50 @@ public class BuscarMascota extends javax.swing.JFrame {
                     a.add(res);
                 }
             }else{
-                a.add("No se encontraron mascotas");
+                listModel.addElement("No se encontraron mascotas");
             }
         } catch (SQLException ex) {
             Logger.getLogger(IngresoMascota.class.getName()).log(Level.SEVERE, null, ex);
         }
+        catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Zona sin ingresar");
+        }
     }    
-    
-private void llenarComboBoxes(int i){
-        raza.removeItemAt(5);
-        raza.removeItemAt(4);
-        raza.removeItemAt(3);
-        raza.removeItemAt(2);
-        raza.removeItemAt(1);
-        raza.removeItemAt(0);
-        if (i==0){
-            raza.insertItemAt("Maltes", 0);
-            raza.insertItemAt("Dalmata", 1);
-            raza.insertItemAt("Cocker", 2);
-            raza.insertItemAt("Caniche", 3);
-            raza.insertItemAt("Husky", 4);
-            raza.insertItemAt("No Definido", 5);
-        }           
-        else {
-            raza.insertItemAt("Abisino", 0);
-            raza.insertItemAt("Bombay", 1);
-            raza.insertItemAt("Bengalí", 2);
-            raza.insertItemAt("Bosque de Noruega", 3);
-            raza.insertItemAt("British Shorthair", 4);
-            raza.insertItemAt("No Definido", 5);
-        }       
+ 
+    /**
+     * Metodo encargado de llenar con informacion en el combo Box.
+     * Dicha informacion son las razas de animales dentro de la base de datos.
+     * 
+     * @param i 
+     */
+private void llenarComboBoxes(int i) throws SQLException{
+        raza.removeAllItems();
+        ArrayList razas= new ArrayList();
+        ResultSet rs= bdd.enviarConsulta("SELECT NOMBRE FROM RAZA WHERE RAZA.IDraza IN "
+                + "(SELECT RAZAtipoanimal.IDraza FROM RAZATIPOANIMAL WHERE RAZATIPOANIMAL.idtipo=" +(i+1)+")");
+        while(rs.next()){
+            razas.add(rs.getString(1));
+        }
+        for( int e=0; e< razas.size();e++){
+            raza.insertItemAt((String) razas.get(e), e);
+        }      
     }
-
+private void llenarComboBoxes2() throws SQLException{
+        tipoAnimal.removeAllItems();
+        ArrayList tipoanimal= new ArrayList();
+        ResultSet rs= bdd.enviarConsulta("SELECT NOMBRE FROM tipoanimal");
+        while(rs.next()){
+            tipoanimal.add(rs.getString(1));
+        }
+        for( int e=0; e< tipoanimal.size();e++){
+            tipoAnimal.insertItemAt((String) tipoanimal.get(e), e);
+        }
+    }
+    /**
+     * Metodo encargado de verificar si una cedula de una persona esta registrada en el sistema
+     * 
+     * @return True si esta, False si no
+     */
     public boolean chequearCI(){
         boolean resultado = true;
         if (cedula.getText().compareTo("")!=0){
@@ -135,7 +159,7 @@ private void llenarComboBoxes(int i){
         jLabel1.setForeground(new java.awt.Color(0, 78, 150));
         jLabel1.setText("Buscar Mascota");
         Fondo.add(jLabel1);
-        jLabel1.setBounds(40, 11, 210, 21);
+        jLabel1.setBounds(40, 11, 210, 24);
 
         jTabbedPane2.setBackground(new java.awt.Color(255, 255, 255));
         jTabbedPane2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
@@ -210,7 +234,6 @@ private void llenarComboBoxes(int i){
         lzona.setText("Indica Zona");
 
         tipoAnimal.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
-        tipoAnimal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perro", "Gato" }));
         tipoAnimal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tipoAnimalActionPerformed(evt);
@@ -218,7 +241,6 @@ private void llenarComboBoxes(int i){
         });
 
         raza.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
-        raza.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Maltes", "Dalmata", "Cocker", "Caninche", "Husky", "No Definida" }));
 
         buscarf.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         buscarf.setText("Buscar");
@@ -265,7 +287,7 @@ private void llenarComboBoxes(int i){
         jTabbedPane2.addTab("Ver mascotas perdidas", jPanel2);
 
         Fondo.add(jTabbedPane2);
-        jTabbedPane2.setBounds(10, 39, 400, 99);
+        jTabbedPane2.setBounds(10, 39, 400, 101);
 
         bverMasc.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         bverMasc.setText("Ver mascota");
@@ -299,14 +321,17 @@ private void llenarComboBoxes(int i){
     private void cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cedulaActionPerformed
-
+    /**
+     * Metodo encargado de buscar una mascota si fue denunciada "encontrado", mediante el numero de cedula del dueño
+     * @param evt 
+     */
     private void bbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbuscarActionPerformed
         boolean chequeo = chequearCI();
         if (chequeo){
             ResultSet rs = bdd.enviarConsulta("select * from mascota where idmascota in "
                     + "(select id_mascota from denuncia where id_mascota in "
                     + "(select id_mascota from dueniomascota where ci_dueño = "+cedula.getText()+") "
-                    + "and tipo_denuncia = 1 and fecharesolucion is null)");
+                    + "and tipo_denuncia = 2 and fecharesolucion is null)");
             imprimirResultados(rs);
         }
     }//GEN-LAST:event_bbuscarActionPerformed
@@ -316,21 +341,40 @@ private void llenarComboBoxes(int i){
     }//GEN-LAST:event_zonaActionPerformed
 
     private void tipoAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoAnimalActionPerformed
-        llenarComboBoxes(tipoAnimal.getSelectedIndex());
+        try {
+            llenarComboBoxes(tipoAnimal.getSelectedIndex());
+        } catch (SQLException ex) {
+            Logger.getLogger(BuscarMascota.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_tipoAnimalActionPerformed
-
+    /**
+     * Busqueda de mascota por zona y raza seleccionadas sobre las denuncias "encontradas, 
+     * se muestran los resultados en pantalla.
+     * @param evt 
+     */
     private void buscarfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarfActionPerformed
         int razas = (tipoAnimal.getSelectedIndex()*6)+(raza.getSelectedIndex()); //TODO ARREGLAR ESTO
         ResultSet rs = bdd.enviarConsulta("select * from mascota where idmascota in "
-            + "(select id_mascota from denuncia where zona = "+zona.getText()+" and tipo_denuncia = 1 and fecharesolucion is null) "
+            + "(select id_mascota from denuncia where zona = "+zona.getText()+" and tipo_denuncia = 2 and fecharesolucion is null) "
             + "and id_raza = " + razas);
         imprimirResultados(rs);
     }//GEN-LAST:event_buscarfActionPerformed
 
     private void bverMascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bverMascActionPerformed
-        new VerMascota(a.get(listaci.getSelectedIndex())).setVisible(true);
+        try{
+            new VerMascota(a.get(listaci.getSelectedIndex())).setVisible(true);
+        }
+        catch (IndexOutOfBoundsException e){
+            JOptionPane.showMessageDialog(null, "Elemento sin seleccionar.");
+        }
+
+
     }//GEN-LAST:event_bverMascActionPerformed
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -353,7 +397,11 @@ private void llenarComboBoxes(int i){
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BuscarMascota().setVisible(true);
+                try {
+                    new BuscarMascota().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(BuscarMascota.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

@@ -3,21 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
- *
+ * Clase responsable de implementar todos los metodos necesarios para registrar una mascota en 
+ * la base de datos.
  * @author francisco.perdomo
  */
 public class IngresoMascota extends javax.swing.JFrame {
     BaseDeDatos1 bdd = new BaseDeDatos1();
-        public IngresoMascota() {
-        initComponents();        
+
+    /**
+     *
+     */
+    public IngresoMascota() throws SQLException {
+        initComponents();  
+        llenarComboBoxes2();
     }
-    
+     /**
+     * Metodo encargado de imprimir los resultados de las consultas a la base de datos.
+     * @param rs 
+     * @param tipocons 
+     */
     public void imprimirResultados(ResultSet rs, int tipocons){
         try {
             String res="";
@@ -38,7 +52,11 @@ public class IngresoMascota extends javax.swing.JFrame {
             Logger.getLogger(IngresoMascota.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+       /**
+     * Clase encargada de chequear que todos los datos necesarios para hacer el registro de la mascota,
+     * esten en la base de dato.
+     * @return True si es todo correcto, False si falta registrarse
+     */
     public boolean chequeoDatos(){
         boolean respuesta = true;
         limpiarErrores();
@@ -53,40 +71,53 @@ public class IngresoMascota extends javax.swing.JFrame {
                 lerrorvet.setText("No existe una veterinaria con ese RUT");
                 respuesta = false;
             } 
+            if( tipoAnimal.getSelectedIndex() == (-1)){
+                JOptionPane.showMessageDialog(null, "Debe ingresar que animal es.");
+                respuesta= false;
+            }
+            if( raza.getSelectedIndex() == (-1)){
+                JOptionPane.showMessageDialog(null, "Debe una raza.");
+                respuesta= false;
+            }            
         } catch (SQLException ex) {
             Logger.getLogger(IngresoMascota.class.getName()).log(Level.SEVERE, null, ex);
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Datos invalidos.");
         }
+            
         return respuesta;
     } 
     
+    /**
+     *
+     */
     public void limpiarErrores(){
         lerrorci.setText("     ");
         lerrorvet.setText("     ");
     }
-    
-    private void llenarComboBoxes(int i){
-        raza.removeItemAt(5);
-        raza.removeItemAt(4);
-        raza.removeItemAt(3);
-        raza.removeItemAt(2);
-        raza.removeItemAt(1);
-        raza.removeItemAt(0);
-        if (i==0){
-            raza.insertItemAt("Maltes", 0);
-            raza.insertItemAt("Dalmata", 1);
-            raza.insertItemAt("Cocker", 2);
-            raza.insertItemAt("Caniche", 3);
-            raza.insertItemAt("Husky", 4);
-            raza.insertItemAt("No Definido", 5);
-        }           
-        else {
-            raza.insertItemAt("Abisino", 0);
-            raza.insertItemAt("Bombay", 1);
-            raza.insertItemAt("Bengalí", 2);
-            raza.insertItemAt("Bosque de Noruega", 3);
-            raza.insertItemAt("British Shorthair", 4);
-            raza.insertItemAt("No Definido", 5);
-        }       
+   
+    private void llenarComboBoxes(int i) throws SQLException{
+        raza.removeAllItems();
+        ArrayList razas= new ArrayList();
+        ResultSet rs= bdd.enviarConsulta("SELECT NOMBRE FROM RAZA WHERE RAZA.IDraza IN "
+                + "(SELECT RAZAtipoanimal.IDraza FROM RAZATIPOANIMAL WHERE RAZATIPOANIMAL.idtipo=" +(i+1)+")");
+        while(rs.next()){
+            razas.add(rs.getString(1));
+        }
+        for( int e=0; e< razas.size();e++){
+            raza.insertItemAt((String) razas.get(e), e);
+        }      
+    }
+private void llenarComboBoxes2() throws SQLException{
+        tipoAnimal.removeAllItems();
+        ArrayList tipoanimal= new ArrayList();
+        ResultSet rs= bdd.enviarConsulta("SELECT NOMBRE FROM tipoanimal");
+        while(rs.next()){
+            tipoanimal.add(rs.getString(1));
+        }
+        for( int e=0; e< tipoanimal.size();e++){
+            tipoAnimal.insertItemAt((String) tipoanimal.get(e), e);
+        }
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -294,17 +325,25 @@ public class IngresoMascota extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Metodo encargado de listar todas las mascotas registradas.
+     * @param evt 
+     */
     private void listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarActionPerformed
         ResultSet rs = bdd.enviarConsulta("SELECT * FROM mascota;");
         imprimirResultados(rs, 0);
     }//GEN-LAST:event_listarActionPerformed
-
+    /**
+     * Metodo encargado de regsitrar a las mascotas en la base de datos, 
+     * siempre y cuando pasen los chequeos necesarios. En el caso de querer subir una
+     * imagen de la mascota, se abre otra ventana para poder subirla.
+     * @param evt 
+     */
     private void insertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarActionPerformed
         boolean chequeo = chequeoDatos();
         if (chequeo){
             try {
-                int razas = (tipoAnimal.getSelectedIndex()*6)+(raza.getSelectedIndex());
+                int razas = (tipoAnimal.getSelectedIndex()*6)+(raza.getSelectedIndex()+1);
                 ResultSet rs = bdd.enviarConsulta("INSERT INTO mascota (nombre, descripcion, fechanacimiento, id_raza, rut_veterinaria) VALUES "
                         + "('"+ nombre.getText() +"',"
                                 + "'-"+ descripcion.getText() +"',"
@@ -345,13 +384,21 @@ public class IngresoMascota extends javax.swing.JFrame {
     }//GEN-LAST:event_cidueñoActionPerformed
 
     private void tipoAnimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoAnimalActionPerformed
-        llenarComboBoxes(tipoAnimal.getSelectedIndex());
+        try {
+            llenarComboBoxes(tipoAnimal.getSelectedIndex());
+        } catch (SQLException ex) {
+            Logger.getLogger(IngresoMascota.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_tipoAnimalActionPerformed
 
     private void razaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_razaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_razaActionPerformed
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -380,7 +427,11 @@ public class IngresoMascota extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new IngresoMascota().setVisible(true);
+                try {
+                    new IngresoMascota().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(IngresoMascota.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

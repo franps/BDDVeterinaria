@@ -1,17 +1,39 @@
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
- *
+ * Clase que contiene todas las responabilidades con respecto a hacer denuncia.
  * @author francisco.perdomo
  */
 public class Denuncia extends javax.swing.JFrame {
     BaseDeDatos1 bdd = new BaseDeDatos1();
-    public Denuncia() {
+
+    /**
+     *
+     */
+    public Denuncia() throws SQLException {
         initComponents();
+        fecha.setText(fecha());
+        llenarComboBoxes2();
+        System.out.println(fecha());
     }
+    public String fecha(){
+        Date now = new Date(System.currentTimeMillis());
+        SimpleDateFormat date = new SimpleDateFormat("yyyy/MM/dd");
+
+        return date.format(now);
+    }
+     /**
+     * Metodo encargado de imprimir los resultados de las consultas a la base de datos.
+     * @param rs 
+     * @param tipocons 
+     */
     public void imprimirResultados(ResultSet rs, int tipocons){
         try {
             String res="";
@@ -35,7 +57,11 @@ public class Denuncia extends javax.swing.JFrame {
             Logger.getLogger(Denuncia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    /**
+     * Clase encargada de chequear que todos los datos necesarios para hacer una denuncia,
+     * esten en la base de dato.
+     * @return True si es todo correcto, False si falta registrarse
+     */
     public boolean chequeoDatos(){
         boolean respuesta = true;
         limpiarErrores();
@@ -55,16 +81,43 @@ public class Denuncia extends javax.swing.JFrame {
                 lerrorvet.setText("No existe una veterinaria con ese RUT");
                 respuesta = false;
             } 
+            if(!isNumeric(zona.getText())){
+                JOptionPane.showMessageDialog(null, "Zona debe contener solo numeros.");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(IngresoMascota.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NullPointerException np){
+            JOptionPane.showMessageDialog(null, "Rellenar todos los campos.");
         }
         return respuesta;
     } 
+    public static boolean isNumeric(String cadena){
+	try {
+		Integer.parseInt(cadena);
+		return true;
+	} catch (NumberFormatException nfe){
+		return false;
+	}
+    }
     
+    /**
+     *
+     */
     public void limpiarErrores(){
         lerrorci.setText("     ");
         lerrormascota.setText("     ");
         lerrorvet.setText("     ");
+    }
+private void llenarComboBoxes2() throws SQLException{
+        tipoDenuncia.removeAllItems();
+        ArrayList tipoanimal= new ArrayList();
+        ResultSet rs= bdd.enviarConsulta("SELECT descripcion FROM tipodenuncia");
+        while(rs.next()){
+            tipoanimal.add(rs.getString(1));
+        }
+        for( int e=0; e< tipoanimal.size();e++){
+            tipoDenuncia.insertItemAt((String) tipoanimal.get(e), e);
+        }
     }
     
     
@@ -101,6 +154,10 @@ public class Denuncia extends javax.swing.JFrame {
         lerrorci = new javax.swing.JLabel();
         lerrorvet = new javax.swing.JLabel();
         lfondo = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -117,7 +174,7 @@ public class Denuncia extends javax.swing.JFrame {
         Titulo.setForeground(new java.awt.Color(0, 78, 150));
         Titulo.setText("Ingresar Denuncia");
         Fondo.add(Titulo);
-        Titulo.setBounds(103, 11, 197, 29);
+        Titulo.setBounds(100, 0, 197, 29);
 
         lcidenunciante.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lcidenunciante.setForeground(new java.awt.Color(0, 78, 150));
@@ -126,13 +183,9 @@ public class Denuncia extends javax.swing.JFrame {
         Fondo.add(lcidenunciante);
         lcidenunciante.setBounds(30, 90, 100, 20);
 
-        try {
-            fecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
+        fecha.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
         fecha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        fecha.setText("01/01/2017");
+        fecha.setText(fecha());
         fecha.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         fecha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,11 +193,11 @@ public class Denuncia extends javax.swing.JFrame {
             }
         });
         Fondo.add(fecha);
-        fecha.setBounds(480, 130, 90, 20);
+        fecha.setBounds(480, 130, 90, 30);
 
         rutvet.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         Fondo.add(rutvet);
-        rutvet.setBounds(140, 170, 210, 20);
+        rutvet.setBounds(140, 170, 210, 30);
 
         cidenunciante.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         cidenunciante.addActionListener(new java.awt.event.ActionListener() {
@@ -153,21 +206,21 @@ public class Denuncia extends javax.swing.JFrame {
             }
         });
         Fondo.add(cidenunciante);
-        cidenunciante.setBounds(140, 90, 210, 20);
+        cidenunciante.setBounds(140, 90, 210, 30);
 
         lidmascota.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lidmascota.setForeground(new java.awt.Color(0, 78, 150));
         lidmascota.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lidmascota.setText("ID Mascota");
         Fondo.add(lidmascota);
-        lidmascota.setBounds(40, 50, 90, 20);
+        lidmascota.setBounds(40, 40, 90, 20);
 
         lzona.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lzona.setForeground(new java.awt.Color(0, 78, 150));
         lzona.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lzona.setText("Zona perdido");
         Fondo.add(lzona);
-        lzona.setBounds(40, 210, 90, 20);
+        lzona.setBounds(40, 230, 90, 20);
 
         insertar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         insertar.setText("Ingresar Denuncia");
@@ -177,14 +230,14 @@ public class Denuncia extends javax.swing.JFrame {
             }
         });
         Fondo.add(insertar);
-        insertar.setBounds(160, 250, 150, 23);
+        insertar.setBounds(160, 270, 150, 23);
 
         lfecha.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lfecha.setForeground(new java.awt.Color(0, 78, 150));
         lfecha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lfecha.setText("Fecha Perdido");
         Fondo.add(lfecha);
-        lfecha.setBounds(370, 130, 100, 14);
+        lfecha.setBounds(370, 140, 100, 15);
 
         zona.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         zona.addActionListener(new java.awt.event.ActionListener() {
@@ -193,11 +246,11 @@ public class Denuncia extends javax.swing.JFrame {
             }
         });
         Fondo.add(zona);
-        zona.setBounds(140, 210, 210, 20);
+        zona.setBounds(140, 230, 210, 21);
 
         idmascota.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         Fondo.add(idmascota);
-        idmascota.setBounds(140, 50, 210, 20);
+        idmascota.setBounds(140, 40, 210, 30);
 
         lrut.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lrut.setForeground(new java.awt.Color(0, 78, 150));
@@ -212,7 +265,7 @@ public class Denuncia extends javax.swing.JFrame {
         jScrollPane1.setViewportView(resultado);
 
         Fondo.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 310, 620, 86);
+        jScrollPane1.setBounds(20, 310, 620, 96);
 
         listar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         listar.setText("Listar denuncias");
@@ -237,7 +290,7 @@ public class Denuncia extends javax.swing.JFrame {
             }
         });
         Fondo.add(tipoDenuncia);
-        tipoDenuncia.setBounds(140, 130, 210, 20);
+        tipoDenuncia.setBounds(140, 140, 210, 21);
 
         lerrormascota.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lerrormascota.setForeground(new java.awt.Color(255, 0, 0));
@@ -255,12 +308,29 @@ public class Denuncia extends javax.swing.JFrame {
         lerrorvet.setForeground(new java.awt.Color(255, 0, 0));
         lerrorvet.setText("          ");
         Fondo.add(lerrorvet);
-        lerrorvet.setBounds(140, 190, 280, 20);
+        lerrorvet.setBounds(140, 200, 280, 20);
 
         lfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoMasc.jpg"))); // NOI18N
         lfondo.setText("     ");
         Fondo.add(lfondo);
         lfondo.setBounds(0, 0, 660, 520);
+
+        jLabel1.setText("jLabel1");
+        Fondo.add(jLabel1);
+        jLabel1.setBounds(170, 260, 34, 14);
+
+        jLabel2.setText("jLabel2");
+        Fondo.add(jLabel2);
+        jLabel2.setBounds(490, 250, 34, 14);
+
+        jLabel3.setText("jLabel3");
+        Fondo.add(jLabel3);
+        jLabel3.setBounds(140, 250, 210, 14);
+        jLabel3.getAccessibleContext().setAccessibleName("lerrorZona");
+
+        jLabel4.setText("jLabel4");
+        Fondo.add(jLabel4);
+        jLabel4.setBounds(490, 290, 34, 14);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -283,14 +353,18 @@ public class Denuncia extends javax.swing.JFrame {
     private void cidenuncianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidenuncianteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cidenuncianteActionPerformed
-
+    /**
+     * Metodo encargado de registrar en la base de datos la denuncia hecha, siempre
+     * y cuando pase por los chequepos pertinentes.
+     * @param evt 
+     */
     private void insertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertarActionPerformed
         boolean chequeo = chequeoDatos();
         System.out.println("..."+tipoDenuncia.getSelectedIndex());
         if (chequeo){
             ResultSet rs = bdd.enviarConsulta("INSERT INTO denuncia(cipersona, tipo_denuncia, id_mascota, rut_veterinaria, fechadenuncia, zona) VALUES ("               
                 + cidenunciante.getText() + ","
-                + tipoDenuncia.getSelectedIndex() + ","
+                + (tipoDenuncia.getSelectedIndex()+1) + ","
                 + idmascota.getText() + ","
                 + rutvet.getText() + ","
                 + "'"+ fecha.getText() + "',"
@@ -304,7 +378,10 @@ public class Denuncia extends javax.swing.JFrame {
     private void zonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zonaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_zonaActionPerformed
-
+    /**
+     * Mentodo encargado de listar y mostrar en pantalla todas las denuncias hechas
+     * @param evt 
+     */
     private void listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarActionPerformed
         ResultSet rs = bdd.enviarConsulta("SELECT * FROM Denuncia;");
         imprimirResultados(rs, 0);
@@ -353,7 +430,11 @@ public class Denuncia extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Denuncia().setVisible(true);
+                try {
+                    new Denuncia().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Denuncia.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -365,6 +446,10 @@ public class Denuncia extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField fecha;
     private javax.swing.JTextField idmascota;
     private javax.swing.JButton insertar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;

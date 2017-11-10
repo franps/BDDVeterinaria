@@ -14,15 +14,23 @@ import javax.swing.JFileChooser;
 
 
 /**
- *
+ * Clase encargada de subir una imagen cuando se registra una mascota.
  * @author francisco.perdomo
  */
 public class SubirImagen extends javax.swing.JFrame {
     int idMascota=0;
     
+    /**
+     *
+     */
     public SubirImagen() {
         initComponents();
     }
+
+    /**
+     *
+     * @param idm
+     */
     public SubirImagen(int idm) {
         initComponents();
         idMascota = idm;
@@ -107,7 +115,11 @@ public class SubirImagen extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * Metodo encargado de subir una imagen desde la Pc, y pasarla a bytes para luego ingresar
+     * en la base de datos relacionada con la mascota.
+     * @param evt 
+     */
     private void subirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subirActionPerformed
         JFileChooser fc = new JFileChooser();
         fc.showOpenDialog(imagen1);

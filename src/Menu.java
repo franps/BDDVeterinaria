@@ -1,3 +1,8 @@
+
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -5,7 +10,7 @@
  */
 
 /**
- *
+ * Clase encargada de mostrar todas las opciones posibles que un veterinario puede realizar en el programa.
  * @author francisco.perdomo
  */
 public class Menu extends javax.swing.JFrame {
@@ -127,15 +132,27 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bIngresoActionPerformed
-        new IngresoMascota().setVisible(true);
+        try {
+            new IngresoMascota().setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_bIngresoActionPerformed
 
     private void bdenunciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bdenunciaActionPerformed
-        new Denuncia().setVisible(true);
+        try {
+            new Denuncia().setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_bdenunciaActionPerformed
 
     private void bbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bbuscarActionPerformed
-        new BuscarMascota().setVisible(true);
+        try {
+            new BuscarMascota().setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_bbuscarActionPerformed
 
     private void bregperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bregperActionPerformed
