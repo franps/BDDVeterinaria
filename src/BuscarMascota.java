@@ -365,6 +365,8 @@ private void llenarComboBoxes2() throws SQLException{
             new VerMascota(a.get(listaci.getSelectedIndex())).setVisible(true);
         } catch (IOException ex) {
             Logger.getLogger(BuscarMascota.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(BuscarMascota.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
