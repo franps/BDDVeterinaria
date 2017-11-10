@@ -1,7 +1,10 @@
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -9,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 
@@ -37,7 +41,7 @@ public class VerMascota extends javax.swing.JFrame {
      *
      * @param datosm
      */
-    public VerMascota(String datosm) {
+    public VerMascota(String datosm) throws IOException {
         initComponents();
         textoayuda.setText("<html>Si se recuperó la mascota,<br>  ingresa la cédula de quien <br> la fue a buscar y haz click aquí :</html>");
         String[] lista = datosm.split(", ");
@@ -62,24 +66,28 @@ public class VerMascota extends javax.swing.JFrame {
     /**
      * Metodo encargado de mostrar la foto de la mascota en pantalla cuando se muestra la denuncia.
      */
-    public void subirfoto(){
+    public void subirfoto() throws IOException{
         try {
             Connection con = null;
             Class.forName("org.postgresql.Driver").newInstance();
             // Obtiene una conexión a la base de datos
-            con = DriverManager.getConnection("jdbc:postgresql://192.168.56.101:5432/postgres","postgres","a");
+            con = DriverManager.getConnection("jdbc:postgresql://192.168.56.56:5432/Mascotas","postgres","people098");
             if (!con.isClosed()){
                 System.out.println("Successfully connected to MySQL server using TCP/IP...");
             } 
-            PreparedStatement ps2 = con.prepareStatement("SELECT imagen FROM imagen WHERE id = "+nrochip.getText());
+            PreparedStatement ps2 = con.prepareStatement("SELECT idimagen FROM imagen WHERE idmascota = "+nrochip.getText());
             ResultSet rs = ps2.executeQuery();
-            boolean hayFoto= rs.next();
-            if (hayFoto){
-                byte[] imgBytes = rs.getBytes(1);
-                foto.setIcon(new ImageIcon(imgBytes));
-            }else{
-                foto.setIcon(new ImageIcon("src/imagenes/catdog.png"));
-                pieFoto.setText("Esta mascota no tiene foto asignada");
+            //boolean hayFoto= rs.next();
+            while(rs.next()){
+                byte[] blob= rs.getBytes(1);
+                if (blob!=null){
+                    BufferedImage img = null;
+                    img= ImageIO.read(new ByteArrayInputStream(blob));
+                    foto.setIcon(new ImageIcon(blob));
+                }else{
+                    foto.setIcon(new ImageIcon("src/imagenes/catdog.png"));
+                    pieFoto.setText("Esta mascota no tiene foto asignada");
+                }
             }
             ps2.close();
             rs.close();
@@ -135,37 +143,37 @@ public class VerMascota extends javax.swing.JFrame {
         ldatos.setForeground(new java.awt.Color(0, 78, 150));
         ldatos.setText("Datos de: ");
         Fondo.add(ldatos);
-        ldatos.setBounds(10, 30, 89, 21);
+        ldatos.setBounds(10, 30, 82, 24);
 
         lnrochip.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lnrochip.setForeground(new java.awt.Color(0, 78, 150));
         lnrochip.setText("Nro Chip: ");
         Fondo.add(lnrochip);
-        lnrochip.setBounds(20, 115, 54, 14);
+        lnrochip.setBounds(20, 115, 47, 15);
 
         lfechanac.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lfechanac.setForeground(new java.awt.Color(0, 78, 150));
         lfechanac.setText("Fecha Nac:");
         Fondo.add(lfechanac);
-        lfechanac.setBounds(10, 90, 63, 14);
+        lfechanac.setBounds(10, 90, 55, 15);
 
         lraza.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lraza.setForeground(new java.awt.Color(0, 78, 150));
         lraza.setText("Raza: ");
         Fondo.add(lraza);
-        lraza.setBounds(39, 65, 34, 14);
+        lraza.setBounds(39, 65, 31, 15);
 
         ldesc.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         ldesc.setForeground(new java.awt.Color(0, 78, 150));
         ldesc.setText("Descripción: ");
         Fondo.add(ldesc);
-        ldesc.setBounds(10, 160, 73, 14);
+        ldesc.setBounds(10, 160, 63, 15);
 
         lvet.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lvet.setForeground(new java.awt.Color(0, 78, 150));
         lvet.setText("Veterinaria:");
         Fondo.add(lvet);
-        lvet.setBounds(10, 140, 66, 14);
+        lvet.setBounds(10, 140, 56, 15);
 
         datos.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         datos.setForeground(new java.awt.Color(0, 78, 150));
@@ -177,31 +185,31 @@ public class VerMascota extends javax.swing.JFrame {
         raza.setForeground(new java.awt.Color(0, 78, 150));
         raza.setText("    ");
         Fondo.add(raza);
-        raza.setBounds(79, 65, 12, 14);
+        raza.setBounds(79, 65, 90, 15);
 
         fechanac.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         fechanac.setForeground(new java.awt.Color(0, 78, 150));
         fechanac.setText("    ");
         Fondo.add(fechanac);
-        fechanac.setBounds(79, 90, 12, 14);
+        fechanac.setBounds(79, 90, 90, 15);
 
         nrochip.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         nrochip.setForeground(new java.awt.Color(0, 78, 150));
         nrochip.setText("    ");
         Fondo.add(nrochip);
-        nrochip.setBounds(80, 115, 12, 14);
+        nrochip.setBounds(80, 115, 90, 15);
 
         vet.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         vet.setForeground(new java.awt.Color(0, 78, 150));
         vet.setText("    ");
         Fondo.add(vet);
-        vet.setBounds(89, 140, 12, 14);
+        vet.setBounds(89, 140, 90, 15);
 
         desc.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         desc.setForeground(new java.awt.Color(0, 78, 150));
         desc.setText("    ");
         Fondo.add(desc);
-        desc.setBounds(89, 160, 12, 14);
+        desc.setBounds(89, 160, 80, 15);
 
         foto.setMaximumSize(new java.awt.Dimension(200, 200));
         foto.setMinimumSize(new java.awt.Dimension(200, 200));
@@ -216,7 +224,7 @@ public class VerMascota extends javax.swing.JFrame {
             }
         });
         Fondo.add(bresolver);
-        bresolver.setBounds(240, 260, 137, 23);
+        bresolver.setBounds(240, 260, 123, 23);
 
         textoayuda.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         textoayuda.setForeground(new java.awt.Color(0, 78, 150));

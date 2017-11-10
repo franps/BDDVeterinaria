@@ -127,7 +127,7 @@ public class SubirImagen extends javax.swing.JFrame {
             Connection con = null;
             Class.forName("org.postgresql.Driver").newInstance();
             // Obtiene una conexión a la base de datos
-            con = DriverManager.getConnection("jdbc:postgresql://192.168.56.101:5432/postgres","postgres","a");
+            con = DriverManager.getConnection("jdbc:postgresql://192.168.56.56:5432/Mascotas","postgres","people098");
             if (!con.isClosed()){
                 System.out.println("Successfully connected to MySQL server using TCP/IP...");
             }

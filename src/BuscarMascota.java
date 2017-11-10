@@ -1,4 +1,5 @@
 
+import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -42,8 +43,7 @@ public class BuscarMascota extends javax.swing.JFrame {
             a.clear();
             listModel.clear();
             String res="";
-            if (rs.next()){
-                while (rs.next()) {
+            while (rs.next()) {
                     res = rs.getString(1)+ ", " 
                           +rs.getString(2);
                     listModel.addElement(res);
@@ -52,9 +52,7 @@ public class BuscarMascota extends javax.swing.JFrame {
                           +rs.getString(5)+ ", "
                           +rs.getString(6);
                     a.add(res);
-                }
-            }else{
-                listModel.addElement("No se encontraron mascotas");
+//                a.add("No se encontraron mascotas");
             }
         } catch (SQLException ex) {
             Logger.getLogger(IngresoMascota.class.getName()).log(Level.SEVERE, null, ex);
@@ -331,7 +329,7 @@ private void llenarComboBoxes2() throws SQLException{
             ResultSet rs = bdd.enviarConsulta("select * from mascota where idmascota in "
                     + "(select id_mascota from denuncia where id_mascota in "
                     + "(select id_mascota from dueniomascota where ci_dueño = "+cedula.getText()+") "
-                    + "and tipo_denuncia = 2 and fecharesolucion is null)");
+                    + "and fecharesolucion is null)");
             imprimirResultados(rs);
         }
     }//GEN-LAST:event_bbuscarActionPerformed
@@ -355,17 +353,18 @@ private void llenarComboBoxes2() throws SQLException{
     private void buscarfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarfActionPerformed
         int razas = (tipoAnimal.getSelectedIndex()*6)+(raza.getSelectedIndex()); //TODO ARREGLAR ESTO
         ResultSet rs = bdd.enviarConsulta("select * from mascota where idmascota in "
-            + "(select id_mascota from denuncia where zona = "+zona.getText()+" and tipo_denuncia = 2 and fecharesolucion is null) "
+            + "(select id_mascota from denuncia where zona = "+zona.getText()+" and fecharesolucion is null) "
             + "and id_raza = " + razas);
         imprimirResultados(rs);
     }//GEN-LAST:event_buscarfActionPerformed
 
     private void bverMascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bverMascActionPerformed
-        try{
+            System.out.println(listaci.getSelectedIndex());
+            System.out.println(a.get(listaci.getSelectedIndex()));
+        try {
             new VerMascota(a.get(listaci.getSelectedIndex())).setVisible(true);
-        }
-        catch (IndexOutOfBoundsException e){
-            JOptionPane.showMessageDialog(null, "Elemento sin seleccionar.");
+        } catch (IOException ex) {
+            Logger.getLogger(BuscarMascota.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 
