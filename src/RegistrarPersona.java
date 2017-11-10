@@ -53,10 +53,12 @@ public class RegistrarPersona extends javax.swing.JFrame {
                 lerrtel.setText("Este campo no puede ser vacío");
                 respuesta = false;
             }
-            if (!isNumeric(telalt.getText())) {
-                JOptionPane.showMessageDialog(null, "Telefono solo debe ser numerico");
-                respuesta = false;
-            } 
+            if (telalt.getText().compareTo("")!=0){
+                if (!isNumeric(telalt.getText())) {
+                    JOptionPane.showMessageDialog(null, "Telefono solo debe ser numerico");
+                    respuesta = false;
+                } 
+            }
             if (dir.getText().compareTo("")==0) {
                 lerrdir.setText("Este campo no puede ser vacío");
                 respuesta = false;
@@ -127,11 +129,11 @@ public class RegistrarPersona extends javax.swing.JFrame {
         titulo.setForeground(new java.awt.Color(0, 78, 150));
         titulo.setText("Registrar Persona");
         Fondo.add(titulo);
-        titulo.setBounds(111, 11, 193, 32);
+        titulo.setBounds(111, 11, 215, 29);
 
         ci.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         Fondo.add(ci);
-        ci.setBounds(111, 51, 215, 21);
+        ci.setBounds(111, 51, 215, 20);
 
         nom.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         nom.addActionListener(new java.awt.event.ActionListener() {
@@ -140,16 +142,15 @@ public class RegistrarPersona extends javax.swing.JFrame {
             }
         });
         Fondo.add(nom);
-        nom.setBounds(111, 77, 215, 21);
+        nom.setBounds(111, 77, 215, 20);
 
         tel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         Fondo.add(tel);
-        tel.setBounds(111, 103, 215, 21);
+        tel.setBounds(111, 103, 215, 20);
 
         telalt.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
-        telalt.setText(" ");
         Fondo.add(telalt);
-        telalt.setBounds(111, 129, 215, 21);
+        telalt.setBounds(111, 129, 215, 20);
 
         dir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         dir.addActionListener(new java.awt.event.ActionListener() {
@@ -158,37 +159,37 @@ public class RegistrarPersona extends javax.swing.JFrame {
             }
         });
         Fondo.add(dir);
-        dir.setBounds(111, 155, 215, 21);
+        dir.setBounds(111, 155, 215, 20);
 
         lci.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lci.setForeground(new java.awt.Color(0, 78, 150));
         lci.setText("CI:");
         Fondo.add(lci);
-        lci.setBounds(67, 54, 12, 15);
+        lci.setBounds(67, 54, 14, 14);
 
         lnom.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lnom.setForeground(new java.awt.Color(0, 78, 150));
         lnom.setText("Nombre:");
         Fondo.add(lnom);
-        lnom.setBounds(34, 80, 40, 15);
+        lnom.setBounds(34, 80, 47, 14);
 
         ltel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         ltel.setForeground(new java.awt.Color(0, 78, 150));
         ltel.setText("Teléfono:");
         Fondo.add(ltel);
-        ltel.setBounds(29, 106, 45, 15);
+        ltel.setBounds(29, 106, 52, 14);
 
         ltelalt.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         ltelalt.setForeground(new java.awt.Color(0, 78, 150));
         ltelalt.setText("Teléfono alt:");
         Fondo.add(ltelalt);
-        ltelalt.setBounds(10, 132, 59, 15);
+        ltelalt.setBounds(10, 132, 69, 14);
 
         ldir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         ldir.setForeground(new java.awt.Color(0, 78, 150));
         ldir.setText("Dirección:");
         Fondo.add(ldir);
-        ldir.setBounds(24, 158, 48, 15);
+        ldir.setBounds(24, 158, 57, 14);
 
         jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         jButton1.setText("Registrar");
@@ -272,13 +273,22 @@ public class RegistrarPersona extends javax.swing.JFrame {
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         chequeoDatos();
-        bdd.enviarConsulta("insert into persona (ci,nombre,telefono,telefonoalternativo,direccion) values("
-            + ci.getText()+",'"
-            + nom.getText()+"',"
-            + tel.getText()+","
-            + telalt.getText()+",'"
-            + dir.getText()
-            + "')");
+        if(telalt.getText().compareTo("")!=0){
+            bdd.enviarConsulta("insert into persona (ci,nombre,telefono,telefonoalternativo,direccion) values("
+                + ci.getText()+",'"
+                + nom.getText()+"',"
+                + tel.getText()+","
+                + telalt.getText()+",'"
+                + dir.getText()
+                + "')");
+        }else{
+            bdd.enviarConsulta("insert into persona (ci,nombre,telefono,direccion) values("
+                + ci.getText()+",'"
+                + nom.getText()+"',"
+                + tel.getText()+",'"
+                + dir.getText()
+                + "')");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -22,7 +22,7 @@ public ResultSet enviarConsulta(String consulta) {
         // Carga el driver JDBC para PostgreSQL
         Class.forName("org.postgresql.Driver").newInstance();
         // Obtiene una conexión a la base de datos
-        con = DriverManager.getConnection("jdbc:postgresql://192.168.56.56:5432/Mascotas","postgres","people098");
+        con = DriverManager.getConnection("jdbc:postgresql://192.168.56.101:5432/postgres","postgres","a");
         System.out.println(con);
         if (!con.isClosed()){
             System.out.println("Successfully connected to PostgreSQL server using TCP/IP...");
