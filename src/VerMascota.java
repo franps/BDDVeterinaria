@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -41,7 +42,7 @@ public class VerMascota extends javax.swing.JFrame {
      *
      * @param datosm
      */
-    public VerMascota(String datosm) throws IOException {
+    public VerMascota(String datosm) throws IOException, SQLException {
         initComponents();
         textoayuda.setText("<html>Si se recuperó la mascota,<br>  ingresa la cédula de quien <br> la fue a buscar y haz click aquí :</html>");
         String[] lista = datosm.split(", ");
@@ -58,10 +59,16 @@ public class VerMascota extends javax.swing.JFrame {
      *
      * @param idraza
      */
-    public void agregarRaza(String idraza){
+    public void agregarRaza(String idraza) throws SQLException{
+        ArrayList resultado= new ArrayList();
         int idraza1 = Integer.parseInt(idraza);
-        String[] nombres = {"Labrador","Husky","Chihuahua","Persa","Siamés","Snowshoe","lolito"};
-        raza.setText(nombres[idraza1]);
+        ResultSet rs= bdd.enviarConsulta("SELECT NOMBRE FROM RAZA");
+        BaseDeDatos1 bdd= new BaseDeDatos1();
+        while(rs.next()){
+            resultado.add(rs.getString(1));
+        }
+;
+        raza.setText(resultado.get(idraza1).toString());
     }
     /**
      * Metodo encargado de mostrar la foto de la mascota en pantalla cuando se muestra la denuncia.
