@@ -82,12 +82,12 @@ public class Denuncia extends javax.swing.JFrame {
                 respuesta = false;
             } 
             if(!isNumeric(zona.getText())){
-                JOptionPane.showMessageDialog(null, "Zona debe contener solo numeros.");
+                lerrorzona.setText("La zona debe contener solo numeros.");
             }
         } catch (SQLException ex) {
             Logger.getLogger(IngresoMascota.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NullPointerException np){
-            JOptionPane.showMessageDialog(null, "Rellenar todos los campos.");
+            lerrorzona.setText("Rellenar todos los campos.");
         }
         return respuesta;
     } 
@@ -107,6 +107,7 @@ public class Denuncia extends javax.swing.JFrame {
         lerrorci.setText("     ");
         lerrormascota.setText("     ");
         lerrorvet.setText("     ");
+        lerrorzona.setText("     ");
     }
 private void llenarComboBoxes2() throws SQLException{
         tipoDenuncia.removeAllItems();
@@ -153,11 +154,8 @@ private void llenarComboBoxes2() throws SQLException{
         lerrormascota = new javax.swing.JLabel();
         lerrorci = new javax.swing.JLabel();
         lerrorvet = new javax.swing.JLabel();
+        lerrorzona = new javax.swing.JLabel();
         lfondo = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -230,14 +228,14 @@ private void llenarComboBoxes2() throws SQLException{
             }
         });
         Fondo.add(insertar);
-        insertar.setBounds(160, 270, 150, 23);
+        insertar.setBounds(160, 280, 150, 23);
 
         lfecha.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lfecha.setForeground(new java.awt.Color(0, 78, 150));
         lfecha.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lfecha.setText("Fecha Perdido");
         Fondo.add(lfecha);
-        lfecha.setBounds(370, 140, 100, 15);
+        lfecha.setBounds(370, 140, 100, 14);
 
         zona.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         zona.addActionListener(new java.awt.event.ActionListener() {
@@ -246,7 +244,7 @@ private void llenarComboBoxes2() throws SQLException{
             }
         });
         Fondo.add(zona);
-        zona.setBounds(140, 230, 210, 21);
+        zona.setBounds(140, 230, 210, 20);
 
         idmascota.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         Fondo.add(idmascota);
@@ -265,7 +263,7 @@ private void llenarComboBoxes2() throws SQLException{
         jScrollPane1.setViewportView(resultado);
 
         Fondo.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 310, 620, 96);
+        jScrollPane1.setBounds(20, 310, 620, 86);
 
         listar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         listar.setText("Listar denuncias");
@@ -290,7 +288,7 @@ private void llenarComboBoxes2() throws SQLException{
             }
         });
         Fondo.add(tipoDenuncia);
-        tipoDenuncia.setBounds(140, 140, 210, 21);
+        tipoDenuncia.setBounds(140, 140, 210, 20);
 
         lerrormascota.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         lerrormascota.setForeground(new java.awt.Color(255, 0, 0));
@@ -310,27 +308,16 @@ private void llenarComboBoxes2() throws SQLException{
         Fondo.add(lerrorvet);
         lerrorvet.setBounds(140, 200, 280, 20);
 
+        lerrorzona.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
+        lerrorzona.setForeground(new java.awt.Color(255, 0, 0));
+        lerrorzona.setText("   ");
+        Fondo.add(lerrorzona);
+        lerrorzona.setBounds(134, 254, 220, 20);
+
         lfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/FondoMasc.jpg"))); // NOI18N
         lfondo.setText("     ");
         Fondo.add(lfondo);
         lfondo.setBounds(0, 0, 660, 520);
-
-        jLabel1.setText("jLabel1");
-        Fondo.add(jLabel1);
-        jLabel1.setBounds(170, 260, 34, 14);
-
-        jLabel2.setText("jLabel2");
-        Fondo.add(jLabel2);
-        jLabel2.setBounds(490, 250, 34, 14);
-
-        jLabel3.setText("jLabel3");
-        Fondo.add(jLabel3);
-        jLabel3.setBounds(140, 250, 210, 14);
-        jLabel3.getAccessibleContext().setAccessibleName("lerrorZona");
-
-        jLabel4.setText("jLabel4");
-        Fondo.add(jLabel4);
-        jLabel4.setBounds(490, 290, 34, 14);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -446,10 +433,6 @@ private void llenarComboBoxes2() throws SQLException{
     private javax.swing.JFormattedTextField fecha;
     private javax.swing.JTextField idmascota;
     private javax.swing.JButton insertar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -457,6 +440,7 @@ private void llenarComboBoxes2() throws SQLException{
     private javax.swing.JLabel lerrorci;
     private javax.swing.JLabel lerrormascota;
     private javax.swing.JLabel lerrorvet;
+    private javax.swing.JLabel lerrorzona;
     private javax.swing.JLabel lfecha;
     private javax.swing.JLabel lfondo;
     private javax.swing.JLabel lidmascota;
