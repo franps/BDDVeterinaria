@@ -1,2 +1,2 @@
-# BDDVet
-Programa de veterinaria
+# BDD Vet
+Programa para veterinaria
